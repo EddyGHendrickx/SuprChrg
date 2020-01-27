@@ -1,6 +1,6 @@
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 let cards = document.getElementsByClassName("cards");
-
+console.log(cards[1].children);
 (function () {
     document.getElementById("run").addEventListener("click", function () {
         let ingredientsInput = document.getElementById("ingredientsInput").value;
@@ -27,6 +27,8 @@ async function getRecipes(ingredient) {
     console.log(recipeImg, recipeTitle);
     console.log(recipeTime, recipeCals);
     for (let i = 0; i < cards.length; i++) {
-        cards[i] = recipeTitle[i];
+        cards[i].children[0].innerHTML = recipeTitle[i];
+        cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
+
     }
 }
