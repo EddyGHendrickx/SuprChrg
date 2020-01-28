@@ -1,17 +1,14 @@
 let buttons = document.querySelectorAll(".carouselBtn");
 let nxtBtn = document.getElementById("nxtBtn");
 let prvBtn = document.getElementById("prvBtn");
-let page = 1;
-const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
-
 let cards = document.getElementsByClassName("cards");
-
-
+const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
 const REDIRECT_URI = 'redirect_uri=http://localhost:12345/';
 const TOKEN_TYPE = 'response_type=token';
+let page = 1;
 
 (function () {
     document.getElementById("run").addEventListener("click", function () {
@@ -112,20 +109,18 @@ async function getRecipes(ingredient) {
             }
         })
     });
-
-
-}
-
-// check for an accesskey, otherwise get one
-token = window.location.hash.substr(1).split('&')[0].split("=")[1];
-if (token) {
-    window.opener.spotifyCallback(token)
 }
 
 // create url for spotify authentication
 function buildLink(ingredient) {
     let link = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
     return link;
+}
+
+// check for an accesskey, otherwise get one
+token = window.location.hash.substr(1).split('&')[0].split("=")[1];
+if (token) {
+    window.opener.spotifyCallback(token)
 }
 
 // Popup a window and return the key that spotify returned
