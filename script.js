@@ -13,9 +13,7 @@ let page = 1;
 (function () {
 
     // Hide carousel buttons
-    for (let btn of buttons) {
-        btn.style.visibility = "hidden";
-    }
+
 
     document.getElementById("run").addEventListener("click", function () {
 
