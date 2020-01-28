@@ -4,6 +4,8 @@ let prvBtn = document.getElementById("prvBtn");
 let page = 1;
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 let cards = document.getElementsByClassName("cards");
+
+
 (function () {
     document.getElementById("run").addEventListener("click", function () {
         let ingredientsInput = document.getElementById("ingredientsInput").value;
@@ -11,10 +13,16 @@ let cards = document.getElementsByClassName("cards");
     });
 })();
 
+for (let btn of buttons) {
+    btn.style.visibility = "hidden";
+}
+
 async function getRecipes(ingredient) {
     //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
     let path = "onion.json";
-
+    for (let btn of buttons) {
+        btn.style.visibility = "visible";
+    }
     const recipes = await fetch(path);
     const data = await recipes.json();
     let recipeTitle = [];

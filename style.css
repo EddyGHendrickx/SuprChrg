@@ -7,7 +7,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
     grid-column-gap: 1em;
-    grid-template-rows: 1fr 3fr;
+    grid-row-gap: 1em;
+    grid-template-rows: 1fr 3fr 1fr;
 }
 
 #topSection {
@@ -16,7 +17,8 @@ body {
     display: flex;
     height: 3em;
     justify-content: center;
-    margin-top: 3vh
+    margin-top: 3vh;
+    background-color: rebeccapurple;
 }
 
 #searchBar {
@@ -42,27 +44,61 @@ body {
 #carousel2, #carousel5, #carousel8 {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column-reverse;
+    align-items: center;
     grid-row: 2/3;
     grid-column: 3/4;
 }
 
 #carousel3, #carousel6, #carousel9 {
     display: flex;
+    justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: center;
     grid-row: 2/3;
     grid-column: 4/5;
 }
 
 #nxtBtn {
+    align-self: center;
     grid-row: 2/3;
     grid-column: 5/6;
 }
 
 #prvBtn {
+    align-self: center;
     grid-row: 2/3;
     grid-column: 1/2;
+}
+
+#wineScore{
+    background-color: red;
+    grid-row: 3/4;
+    grid-column: 0/3;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: all 500ms ease-in-out;
+}
+#wineScore:hover{
+    background-color: darkred;
+    transform: translateX(2em);
+    border-bottom-right-radius: 80%;
+    border-top-right-radius: 80%;
+    grid-column: 0/6;
+}
+
+#spotify{
+    background-color: green;
+    grid-row: 3/4;
+    grid-column: 5/6;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    transition: all 500ms ease-in-out;
+}
+#spotify:hover{
+    background-color: darkgreen;
+    transform: translateX(-8em);
+    border-bottom-left-radius: 80%;
+    border-top-left-radius: 80%;
+    grid-column: 0/6;
 }
