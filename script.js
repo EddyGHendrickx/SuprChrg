@@ -9,7 +9,9 @@ console.log(cards[1].children);
 })();
 
 async function getRecipes(ingredient) {
-    let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
+    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
+    let path = "tomato.json";
+
     const recipes = await fetch(path);
     const data = await recipes.json();
     let recipeTitle = [];
@@ -27,8 +29,10 @@ async function getRecipes(ingredient) {
     console.log(recipeImg, recipeTitle);
     console.log(recipeTime, recipeCals);
     for (let i = 0; i < cards.length; i++) {
+        console.log(cards[i]);
         cards[i].children[0].innerHTML = recipeTitle[i];
         cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
 
     }
 }
+
