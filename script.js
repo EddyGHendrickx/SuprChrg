@@ -42,7 +42,7 @@ function loginSpotify(ingredient) {
     window.spotifyCallback = function(accessKey) {
         popup.close();
 
-        fetch('https://api.spotify.com/v1/search?q=pizza&type=playlist', {
+        fetch('https://api.spotify.com/v1/search?q=pizza,chicken&type=playlist', {
             headers: {
                 'Authorization': `Bearer ${accessKey}`
             }
