@@ -11,18 +11,28 @@ const TOKEN_TYPE = 'response_type=token';
 let page = 1;
 
 (function () {
+
+    // Hide carousel buttons
+    for (let btn of buttons) {
+        btn.style.visibility = "hidden";
+    }
+
     document.getElementById("run").addEventListener("click", function () {
+
+        // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
-        //getRecipes(ingredientsInput);
-        loginSpotify(ingredientsInput).catch(error => {
+        getRecipes(ingredientsInput).catch(error => {
             console.log(error);
         });
+
+        document.getElementById('spotify').addEventListener('click', function () {
+            loginSpotify(ingredientsInput).catch(error => {
+                console.log(error);
+            });
+        })
     });
 })();
 
-for (let btn of buttons) {
-    btn.style.visibility = "hidden";
-}
 
 async function getRecipes(ingredient) {
     //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
@@ -111,12 +121,6 @@ async function getRecipes(ingredient) {
     });
 }
 
-// create url for spotify authentication
-function buildLink(ingredient) {
-    let link = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
-    return link;
-}
-
 // check for an accesskey, otherwise get one
 token = window.location.hash.substr(1).split('&')[0].split("=")[1];
 if (token) {
@@ -125,7 +129,7 @@ if (token) {
 
 // Popup a window and return the key that spotify returned
 function loginSpotify(ingredient) {
-    let path = buildLink(ingredient);
+    let path = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
     let popup = window.open(path, 'Login in with Spotify', 'width=600, height=400');
 
     window.spotifyCallback = function(accessKey) {
