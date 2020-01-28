@@ -1,6 +1,9 @@
+let buttons = document.querySelectorAll(".carouselBtn");
+let nxtBtn = document.getElementById("nxtBtn");
+let prvBtn = document.getElementById("prvBtn");
+let page = 1;
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 let cards = document.getElementsByClassName("cards");
-console.log(cards[1].children);
 (function () {
     document.getElementById("run").addEventListener("click", function () {
         let ingredientsInput = document.getElementById("ingredientsInput").value;
@@ -25,14 +28,73 @@ async function getRecipes(ingredient) {
         recipeTime.push(data.hits[i].recipe.totalTime);
         recipeCals.push(Math.floor(data.hits[i].recipe.calories));
     }
-    console.log(data);
-    console.log(recipeImg, recipeTitle);
-    console.log(recipeTime, recipeCals);
     for (let i = 0; i < cards.length; i++) {
-        console.log(cards[i]);
         cards[i].children[0].innerHTML = recipeTitle[i];
         cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
-
     }
+    for (let i = 3; i < 9; i++) {
+        cards[i].style.opacity = "0";
+    }
+    buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            console.log(page);
+            if (btn.id === "prvBtn") {
+                page--;
+                if (page === 0){
+                    page = 3;
+                }
+            } else {
+                page++;
+                if (page === 4){
+                    page = 1;
+                }
+            }
+            if (page === 1) {
+                for (let i = 0; i < 3; i++) {
+                    cards[i].style.opacity = "1";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 3; i < 6; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 6; i < 9; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+            }
+            if (page === 2) {
+                for (let i = 0; i < 3; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 3; i < 6; i++) {
+                    cards[i].style.opacity = "1";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 6; i < 9; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+            }
+
+            if (page === 3) {
+                for (let i = 0; i < 3; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 3; i < 6; i++) {
+                    cards[i].style.opacity = "0";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+                for (let i = 6; i < 9; i++) {
+                    cards[i].style.opacity = "1";
+                    cards[i].style.transition = "all 0.5s linear";
+                }
+            }
+        })
+    });
+
+
 }
 
