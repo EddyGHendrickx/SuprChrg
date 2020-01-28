@@ -10,7 +10,7 @@ body {
     grid-template-rows: 1fr 3fr;
 }
 
-#topSection{
+#topSection {
     width: auto;
     grid-column: 3/4;
     display: flex;
@@ -18,6 +18,7 @@ body {
     justify-content: center;
     margin-top: 3vh
 }
+
 #searchBar {
     display: flex;
     justify-content: center;
@@ -29,56 +30,34 @@ body {
     grid-column: 2/3;
 }
 
-#carousel1 {
+#carousel1, #carousel4, #carousel7 {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: column-reverse;
     align-items: center;
     grid-row: 2/3;
     grid-column: 2/3;
 }
-#carousel2{
-    grid-row: 2/3;
-    grid-column: 3/4;
-}
 
-#carousel3{
-    grid-row: 2/3;
-    grid-column: 4/5;
-}
-#carousel4 {
+#carousel2, #carousel5, #carousel8 {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    grid-row: 2/3;
-    grid-column: 2/3;
-}
-#carousel5{
+    flex-direction: column-reverse;
     grid-row: 2/3;
     grid-column: 3/4;
 }
 
-#carousel6{
-    grid-row: 2/3;
-    grid-column: 4/5;
-}
-#carousel7 {
+#carousel3, #carousel6, #carousel9 {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
-    grid-row: 2/3;
-    grid-column: 2/3;
-}
-#carousel8{
-    grid-row: 2/3;
-    grid-column: 3/4;
-}
-
-#carousel9{
+    justify-content: center;
     grid-row: 2/3;
     grid-column: 4/5;
 }
 
-#nxtBtn{
+#nxtBtn {
     grid-row: 2/3;
     grid-column: 5/6;
 }

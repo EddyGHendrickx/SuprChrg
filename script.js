@@ -13,7 +13,7 @@ let cards = document.getElementsByClassName("cards");
 
 async function getRecipes(ingredient) {
     //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
-    let path = "tomato.json";
+    let path = "onion.json";
 
     const recipes = await fetch(path);
     const data = await recipes.json();
