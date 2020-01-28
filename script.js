@@ -9,7 +9,7 @@ const TOKEN_TYPE = 'response_type=token';
     document.getElementById("run").addEventListener("click", function() {
         let ingredientsInput = document.getElementById("ingredientsInput").value;
         //getRecipes(ingredientsInput);
-        getSpotify(ingredientsInput).catch(error => {
+        loginSpotify(ingredientsInput).catch(error => {
             console.log(error);
         });
     });
@@ -22,20 +22,36 @@ async function getRecipes(ingredient) {
     console.log(data);
 }
 
-async function getSpotify(ingredient) {
-    let path = buildLink();
-    console.log(path);
-    loginSpotify(path);
-    console.log(playlists);
+// check for an accesskey, otherwise get one
+token = window.location.hash.substr(1).split('&')[0].split("=")[1];
+if (token) {
+    window.opener.spotifyCallback(token)
 }
 
-function buildLink() {
+// create url for spotify authentication
+function buildLink(ingredient) {
     let link = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
     return link;
 }
 
-function loginSpotify(path) {
+// Popup a window and return the key that spotify returned
+function loginSpotify(ingredient) {
+    let path = buildLink(ingredient);
     let popup = window.open(path, 'Login in with Spotify', 'width=600, height=400');
-    
 
+    window.spotifyCallback = function(accessKey) {
+        popup.close();
+
+        fetch('https://api.spotify.com/v1/search?q=pizza&type=playlist', {
+            headers: {
+                'Authorization': `Bearer ${accessKey}`
+            }
+        }).then(response => {
+            console.log(response);
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        })
+    }
 }
+
