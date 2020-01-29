@@ -28,8 +28,11 @@ function printWine(param) {
         document.getElementById("pairingText").innerHTML = param.pairingText;
     }
     else {
-        document.getElementById("pairedWines").innerHTML = param.pairedWines[0];
         document.getElementById("pairingText").innerText = param.pairingText;
+        for (let i = 0; i < param.pairedWines.length; i++)
+        {
+            document.getElementById("pairedWines").innerHTML = param.pairedWines[i];
+        }
     }
 
     return param;
