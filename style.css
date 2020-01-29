@@ -114,3 +114,9 @@ body {
 }
 
 
+#spotifyImg {
+    align-self: stretch;
+    width: 5vw;
+    height: auto;
+}
+
