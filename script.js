@@ -8,6 +8,8 @@ let chosenCals = document.getElementById("cals");
 let chosenCaut = document.getElementById("caut");
 let chosenRecipe = document.getElementById("fullRecipe");
 let ingrList = document.getElementById("ingrList");
+let cautList = document.getElementById("cautList");
+let chosenLabel = document.getElementById("chosenLabel");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -121,7 +123,7 @@ async function getRecipes(ingredient) {
 
     // Fetch data
     //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
-    let path = "onion.json";
+    let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
     console.log(data);
@@ -130,11 +132,8 @@ async function getRecipes(ingredient) {
     let clickedIngr = [];
     let clickedCautions = [];
 
-    if (ingrList.hasChildNodes()){
-        for (let i = 0; i < clickedIngr.length; i++) {
-            ingrList.removeChild(ingrList.childNodes[0]);
-        }
-    }
+
+
     for (let i = 0; i < cards.length; i++) {
         cards[i].children[0].innerHTML = data.hits[i].recipe.label;
         cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
@@ -147,7 +146,12 @@ async function getRecipes(ingredient) {
                     ingrList.removeChild(ingrList.childNodes[0]);
                 }
             }
-
+            if (cautList.hasChildNodes()){
+                for (let i = 0; i < clickedCautions.length; i++) {
+                    cautList.removeChild(cautList.childNodes[0]);
+                }
+            }
+            chosenLabel.innerHTML = data.hits[i].recipe.label;
             clickedIngr = [];
             clickedCautions = [];
             for (let j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
@@ -159,6 +163,9 @@ async function getRecipes(ingredient) {
             for (let j = 0; j < clickedIngr.length; j++) {
                 ingrList.innerHTML += `<li> ${clickedIngr[j]}</li>`;
             }
+            for (let j = 0; j < clickedCautions.length; j++) {
+                cautList.innerHTML += `<li>${clickedCautions[j]}</li>`;
+            }
 
             console.log("ingr:", clickedIngr);
             console.log("caut:", clickedCautions);
@@ -167,13 +174,12 @@ async function getRecipes(ingredient) {
             chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
             chosenRecipe.innerHTML = "Get the full recipe";
             chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
-            chosenCaut.innerHTML = clickedCautions[i];
+
         });
     }
-    ingrList.innerHTML = "";
-    for (let i = 0; i < clickedIngr.length; i++) {
-        ingrList.innerHTML += `<li> ${ingrList[i]}</li>`;
-    }
+    console.log(clickedCautions);
+
+
 
 }
 

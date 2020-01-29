@@ -5,7 +5,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154475825-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
         gtag('config', 'UA-154475825-2');
     </script>
@@ -88,9 +92,12 @@
 
     <div class="carouselBtn" id="spotify">
         <div id="spotifyBar">
-            <img src="image/spotify.png" alt="" id="spotifyImg">
+            <img alt="" id="spotifyImg" src="image/spotify.png">
             <p id="spotifyDescription">Need a playlist Suggestion?</p>
         </div>
+    </div>
+    <div id="chosenLabelDiv">
+        <p id="chosenLabel"></p>
     </div>
 
     <div class="carouselBtn" id="wineScore">
@@ -104,14 +111,17 @@
     <div id="ingr">
         <ul id="ingrList"></ul>
     </div>
-    <div id="cals">
+    <div id="extraInfo">
+        <div id="cals">
 
-    </div>
-    <div id="caut">
+        </div>
+        <div id="caut">
+            <ul id="cautList"></ul>
+        </div>
 
-    </div>
-    <div id="fullRecipeDiv">
-        <button><a id="fullRecipe"></a></button>
+        <div id="fullRecipeDiv">
+            <button><a id="fullRecipe"></a></button>
+        </div>
     </div>
 </div>
 
