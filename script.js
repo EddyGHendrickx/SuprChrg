@@ -207,12 +207,11 @@ function loginSpotify(ingredient) {
 // Set Playlist info in Div
 function setSpotifyInfo(playlistObj) {
 
-    let playlistArray = playlistObj.playlists.items;
-    console.log(playlistArray);
-    if (playlistArray.length === 0) {
-        console.log('Sorry no playlists available');
+    if (playlistObj.error) {
+        document.getElementById('spotifyDescription').innerHTML = 'Sorry no playlists available';
     }
     else {
+        let playlistArray = playlistObj.playlists.items;
         let playlistId = playlistArray[0].id;
         console.log(playlistId);
         let playlistPicture = playlistArray[0].images[0].url;
