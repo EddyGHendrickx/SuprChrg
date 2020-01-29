@@ -133,15 +133,43 @@ function loginSpotify(ingredient) {
     window.spotifyCallback = function(accessKey) {
         popup.close();
 
-        fetch('https://api.spotify.com/v1/search?q=pizza,chicken&type=playlist', {
+        ingredient = 'q=' + ingredient;
+        fetch('https://api.spotify.com/v1/search?' + ingredient + '&type=playlist', {
             headers: {
                 'Authorization': `Bearer ${accessKey}`
             }
         }).then(response => {
-            console.log(response);
             return response.json();
         }).then(data => {
-            console.log(data);
+            setSpotifyInfo(data);
         })
+    }
+}
+
+// Set Playlist info in Div
+function setSpotifyInfo(playlistObj) {
+
+    let playlistArray = playlistObj.playlists.items;
+    console.log(playlistArray);
+    if (playlistArray.length === 0) {
+        console.log('Sorry no playlists available');
+    }
+    else {
+        let playlistId = playlistArray[0].id;
+        console.log(playlistId);
+        let playlistPicture = playlistArray[0].images[0].url;
+        console.log(playlistPicture);
+        let playlistName = playlistArray[0].name;
+        console.log(playlistName);
+        let playlistExternalUrl = playlistArray[0].external_urls.spotify;
+        console.log(playlistExternalUrl);
+        let playlistDescription = playlistArray[0].description;
+        console.log(playlistDescription);
+
+        document.getElementById('spotifyImg').src = playlistPicture;
+        document.getElementById('spotifyDescription').innerHTML = playlistDescription;
+        document.getElementById('spotifyImg').addEventListener('click', function () {
+            window.open(playlistExternalUrl, playlistName, 'width=600, height=600');
+        });
     }
 }
