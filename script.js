@@ -74,14 +74,25 @@ async function getRecipes(ingredient) {
             clickedRecipe = [];
             clickedCal = [];
             clickedCal.push(data.hits[i].recipe.calories);
-            clickedIngr.push(data.hits[i].recipe.ingredientLines);
             clickedRecipe.push(data.hits[i].recipe.url);
-            clickedCautions.push(data.hits[i].recipe.healthLabels);
             clickedImg.push(data.hits[i].recipe.image);
+            for (let j = 1; j < data.hits[i].recipe.ingredientLines.length; j++) {
+                clickedIngr.push(data.hits[i].recipe.ingredientLines[j]);
+                clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
+
+            }
+            console.log("cals:", clickedCal);
+            console.log("ingr:", clickedIngr);
+            console.log("recipe:", clickedRecipe);
+            console.log("image:", clickedImg);
+            console.log("caut:", clickedCautions);
+
+
             chosenImg.setAttribute("src", clickedImg[0]);
-            chosenRecipe.setAttribute("href", chosenRecipe[i]);
+            chosenRecipe.setAttribute("href", clickedRecipe[0]);
+            chosenRecipe.innerHTML = "Get the full recipe";
             chosenIngr.innerHTML = clickedIngr[i];
-            chosenCals.innerHTML = clickedCal[i];
+            chosenCals.innerHTML = `${Math.floor(clickedCal[0])} kCal`;
             chosenCaut.innerHTML = clickedCautions[i];
         });
 
@@ -128,19 +139,16 @@ async function getRecipes(ingredient) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
                     cards[i].style.display = "none";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "1";
                     cards[i].style.display = "block";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
                     cards[i].style.display = "none";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -161,8 +169,6 @@ async function getRecipes(ingredient) {
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "1";
                     cards[i].style.display = "block";
-
-                    cards[i].style.display = "none";
 
                     cards[i].style.transition = "all 0.5s linear";
                 }
