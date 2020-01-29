@@ -9,17 +9,25 @@ document.getElementById("run").addEventListener("click", function () {
         //console.log(response);
         data = await response.json();
         console.log(data);
+        console.log(data.pairedWines);
+        console.log(data.pairingText);
+        console.log(data.productMatches);
+        printWine(data);
     }
 
     getWine().catch(error => {
         console.log(error);
     });
 
-    printWine(data);
-
 });
 
 function printWine(param) {
-    document.getElementById("testing").innerHTML = param.pairingText;
+    if (param.pairedWines === undefined && param.productMatches === undefined) {
+        document.getElementById("pairingText").innerHTML = param.pairingText;
+    } else {
+        document.getElementById("pairedWines").innerHTML = param.pairedWines[0];
+        document.getElementById("pairingText").innerText = param.pairingText;
+    }
+
     return param;
 }
