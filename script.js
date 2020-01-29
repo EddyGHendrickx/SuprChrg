@@ -38,69 +38,10 @@ let page = 1;
 
 
 async function getRecipes(ingredient) {
-    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
-    let path = "onion.json";
+
+    // Button stuff, Handmade carousel
     for (let btn of buttons) {
         btn.style.visibility = "visible";
-    }
-    const recipes = await fetch(path);
-    const data = await recipes.json();
-    console.log(data);
-    let recipeTitle = [];
-    let recipeImg = [];
-    let recipeIngr = [];
-    let recipeTime = [];
-    let recipeCals = [];
-    for (let i = 0; i < data.hits.length; i++) {
-        recipeTitle.push(data.hits[i].recipe.label);
-        recipeImg.push(data.hits[i].recipe.image);
-        recipeTime.push(data.hits[i].recipe.totalTime);
-        recipeCals.push(Math.floor(data.hits[i].recipe.calories));
-    }
-    let clickedIngr = [];
-    let clickedCautions = [];
-    let clickedRecipe = [];
-    let clickedCal = [];
-    let clickedImg = [];
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].children[0].innerHTML = recipeTitle[i];
-        cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
-
-        cards[i].addEventListener("click", function () {
-            console.log(cards[i].id);
-            clickedImg = [];
-            clickedIngr = [];
-            clickedCautions = [];
-            clickedRecipe = [];
-            clickedCal = [];
-            clickedCal.push(data.hits[i].recipe.calories);
-            clickedRecipe.push(data.hits[i].recipe.url);
-            clickedImg.push(data.hits[i].recipe.image);
-            for (let j = 1; j < data.hits[i].recipe.ingredientLines.length; j++) {
-                clickedIngr.push(data.hits[i].recipe.ingredientLines[j]);
-                clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
-
-            }
-            console.log("cals:", clickedCal);
-            console.log("ingr:", clickedIngr);
-            console.log("recipe:", clickedRecipe);
-            console.log("image:", clickedImg);
-            console.log("caut:", clickedCautions);
-
-
-            chosenImg.setAttribute("src", clickedImg[0]);
-            chosenRecipe.setAttribute("href", clickedRecipe[0]);
-            chosenRecipe.innerHTML = "Get the full recipe";
-            chosenIngr.innerHTML = clickedIngr[i];
-            chosenCals.innerHTML = `${Math.floor(clickedCal[0])} kCal`;
-            chosenCaut.innerHTML = clickedCautions[i];
-        });
-
-    }
-    for (let i = 3; i < 9; i++) {
-        cards[i].style.opacity = "0";
-        cards[i].style.display = "none";
-
     }
     buttons.forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -120,7 +61,6 @@ async function getRecipes(ingredient) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "1";
                     cards[i].style.display = "block";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
@@ -131,7 +71,6 @@ async function getRecipes(ingredient) {
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
                     cards[i].style.display = "none";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -157,24 +96,63 @@ async function getRecipes(ingredient) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
                     cards[i].style.display = "none";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
                     cards[i].style.display = "none";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "1";
                     cards[i].style.display = "block";
-
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
         })
     });
+
+    // Fetch data
+    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
+    let path = "onion.json";
+    const recipes = await fetch(path);
+    const data = await recipes.json();
+    console.log(data);
+
+    // Adding info to cards
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].children[0].innerHTML = data.hits[i].recipe.label;
+        cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
+
+        // Listen to cards for when recipe is chosen
+        cards[i].addEventListener("click", function () {
+            console.log(cards[i].id);
+
+            let clickedIngr = [];
+            let clickedCautions = [];
+            for (let j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
+                clickedIngr.push(data.hits[i].recipe.ingredientLines[j]);
+            }
+            for (let j = 0; j < data.hits[i].recipe.healthLabels.length; j++) {
+                clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
+            }
+
+            console.log("ingr:", clickedIngr);
+            console.log("caut:", clickedCautions);
+
+            chosenImg.setAttribute("src", data.hits[i].recipe.image);
+            chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
+            chosenRecipe.innerHTML = "Get the full recipe";
+            chosenIngr.innerHTML = clickedIngr[i];
+            chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
+            chosenCaut.innerHTML = clickedCautions[i];
+        });
+    }
+    for (let i = 3; i < 9; i++) {
+        cards[i].style.opacity = "0";
+        cards[i].style.display = "none";
+
+    }
 }
 
 // check for an accesskey, otherwise get one
