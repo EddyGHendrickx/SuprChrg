@@ -60,34 +60,34 @@ async function getRecipes(ingredient) {
             if (page === 1) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
             if (page === 2) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -95,17 +95,17 @@ async function getRecipes(ingredient) {
             if (page === 3) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -150,7 +150,7 @@ async function getRecipes(ingredient) {
     }
     for (let i = 3; i < 9; i++) {
         cards[i].style.opacity = "0";
-        cards[i].style.display = "none";
+        cards[i].style.zIndex = "0";
 
     }
 }
