@@ -7,6 +7,7 @@ let chosenIngr = document.getElementById("ingr");
 let chosenCals = document.getElementById("cals");
 let chosenCaut = document.getElementById("caut");
 let chosenRecipe = document.getElementById("fullRecipe");
+let ingrList = document.getElementById("ingrList");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -38,58 +39,11 @@ let page = 1;
 
 
 async function getRecipes(ingredient) {
-    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
-    let path = "onion.json";
+
+
+    // Button stuff, Handmade carousel
     for (let btn of buttons) {
         btn.style.visibility = "visible";
-    }
-    const recipes = await fetch(path);
-    const data = await recipes.json();
-    console.log(data);
-    let recipeTitle = [];
-    let recipeImg = [];
-    let recipeIngr = [];
-    let recipeTime = [];
-    let recipeCals = [];
-    for (let i = 0; i < data.hits.length; i++) {
-        recipeTitle.push(data.hits[i].recipe.label);
-        recipeImg.push(data.hits[i].recipe.image);
-        recipeTime.push(data.hits[i].recipe.totalTime);
-        recipeCals.push(Math.floor(data.hits[i].recipe.calories));
-    }
-    let clickedIngr = [];
-    let clickedCautions = [];
-    let clickedRecipe = [];
-    let clickedCal = [];
-    let clickedImg = [];
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].children[0].innerHTML = recipeTitle[i];
-        cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
-
-        cards[i].addEventListener("click", function () {
-            console.log(cards[i].id);
-            clickedImg = [];
-            clickedIngr = [];
-            clickedCautions = [];
-            clickedRecipe = [];
-            clickedCal = [];
-            clickedCal.push(data.hits[i].recipe.calories);
-            clickedIngr.push(data.hits[i].recipe.ingredientLines);
-            clickedRecipe.push(data.hits[i].recipe.url);
-            clickedCautions.push(data.hits[i].recipe.healthLabels);
-            clickedImg.push(data.hits[i].recipe.image);
-            chosenImg.setAttribute("src", clickedImg[0]);
-            chosenRecipe.setAttribute("href", chosenRecipe[i]);
-            chosenIngr.innerHTML = clickedIngr[i];
-            chosenCals.innerHTML = clickedCal[i];
-            chosenCaut.innerHTML = clickedCautions[i];
-        });
-
-    }
-    for (let i = 3; i < 9; i++) {
-        cards[i].style.opacity = "0";
-        cards[i].style.display = "none";
-
     }
     buttons.forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -108,39 +62,34 @@ async function getRecipes(ingredient) {
             if (page === 1) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
-
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
             if (page === 2) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
-
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -148,27 +97,84 @@ async function getRecipes(ingredient) {
             if (page === 3) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "0";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "1";
-                    cards[i].style.display = "block";
-
-                    cards[i].style.display = "none";
-
+                    cards[i].style.zIndex = "100";
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
         })
     });
+    for (let i = 3; i < 9; i++) {
+        cards[i].style.opacity = "0";
+        cards[i].style.zIndex = "0";
+
+    }
+
+    // Fetch data
+    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
+    let path = "onion.json";
+    const recipes = await fetch(path);
+    const data = await recipes.json();
+    console.log(data);
+
+    // Adding info to cards
+    let clickedIngr = [];
+    let clickedCautions = [];
+
+    if (ingrList.hasChildNodes()){
+        for (let i = 0; i < clickedIngr.length; i++) {
+            ingrList.removeChild(ingrList.childNodes[0]);
+        }
+    }
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].children[0].innerHTML = data.hits[i].recipe.label;
+        cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
+
+        // Listen to cards for when recipe is chosen
+        cards[i].addEventListener("click", function () {
+            console.log(cards[i].id);
+            if (ingrList.hasChildNodes()){
+                for (let j = 0; j < clickedIngr.length; j++) {
+                    ingrList.removeChild(ingrList.childNodes[0]);
+                }
+            }
+
+            clickedIngr = [];
+            clickedCautions = [];
+            for (let j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
+                clickedIngr.push(data.hits[i].recipe.ingredientLines[j]);
+            }
+            for (let j = 0; j < data.hits[i].recipe.healthLabels.length; j++) {
+                clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
+            }
+            for (let j = 0; j < clickedIngr.length; j++) {
+                ingrList.innerHTML += `<li> ${clickedIngr[j]}</li>`;
+            }
+
+            console.log("ingr:", clickedIngr);
+            console.log("caut:", clickedCautions);
+
+            chosenImg.setAttribute("src", data.hits[i].recipe.image);
+            chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
+            chosenRecipe.innerHTML = "Get the full recipe";
+            chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
+            chosenCaut.innerHTML = clickedCautions[i];
+        });
+    }
+    ingrList.innerHTML = "";
+    for (let i = 0; i < clickedIngr.length; i++) {
+        ingrList.innerHTML += `<li> ${ingrList[i]}</li>`;
+    }
+
 }
 
 // check for an accesskey, otherwise get one

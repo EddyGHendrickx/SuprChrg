@@ -5,9 +5,9 @@ body {
 #container {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
-    grid-template-rows: 1fr 3fr 1fr 3fr 1fr;
+    grid-column-gap: 5vh;
+    grid-row-gap: 5vh;
+    grid-template-rows: 0.25fr 1fr 0.5fr 1fr 1fr 1fr;
 }
 
 #topSection {
@@ -121,7 +121,7 @@ body {
 }
 
 #chosenImgDiv{
-    grid-row: 4/5;
+    grid-row: 4/6;
     grid-column: 2/3;
 }
 #cals{
@@ -129,11 +129,15 @@ body {
     grid-column: 3/4;
 }
 #ingr{
-    grid-row: 4/5;
+    grid-row: 5/6;
     grid-column: 3/4;
 }
 
-#caut, #fullRecipeDiv{
+#caut{
     grid-row: 4/5;
+    grid-column: 4/5;
+}
+#fullRecipeDiv{
+    grid-row: 5/6;
     grid-column: 4/5;
 }
