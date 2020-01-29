@@ -7,6 +7,7 @@ let chosenIngr = document.getElementById("ingr");
 let chosenCals = document.getElementById("cals");
 let chosenCaut = document.getElementById("caut");
 let chosenRecipe = document.getElementById("fullRecipe");
+let ingrList = document.getElementById("ingrList");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -38,6 +39,7 @@ let page = 1;
 
 
 async function getRecipes(ingredient) {
+
 
     // Button stuff, Handmade carousel
     for (let btn of buttons) {
@@ -111,6 +113,11 @@ async function getRecipes(ingredient) {
             }
         })
     });
+    for (let i = 3; i < 9; i++) {
+        cards[i].style.opacity = "0";
+        cards[i].style.zIndex = "0";
+
+    }
 
     // Fetch data
     //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
@@ -120,6 +127,14 @@ async function getRecipes(ingredient) {
     console.log(data);
 
     // Adding info to cards
+    let clickedIngr = [];
+    let clickedCautions = [];
+
+    if (ingrList.hasChildNodes()){
+        for (let i = 0; i < clickedIngr.length; i++) {
+            ingrList.removeChild(ingrList.childNodes[0]);
+        }
+    }
     for (let i = 0; i < cards.length; i++) {
         cards[i].children[0].innerHTML = data.hits[i].recipe.label;
         cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
@@ -127,14 +142,22 @@ async function getRecipes(ingredient) {
         // Listen to cards for when recipe is chosen
         cards[i].addEventListener("click", function () {
             console.log(cards[i].id);
+            if (ingrList.hasChildNodes()){
+                for (let j = 0; j < clickedIngr.length; j++) {
+                    ingrList.removeChild(ingrList.childNodes[0]);
+                }
+            }
 
-            let clickedIngr = [];
-            let clickedCautions = [];
+            clickedIngr = [];
+            clickedCautions = [];
             for (let j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
                 clickedIngr.push(data.hits[i].recipe.ingredientLines[j]);
             }
             for (let j = 0; j < data.hits[i].recipe.healthLabels.length; j++) {
                 clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
+            }
+            for (let j = 0; j < clickedIngr.length; j++) {
+                ingrList.innerHTML += `<li> ${clickedIngr[j]}</li>`;
             }
 
             console.log("ingr:", clickedIngr);
@@ -143,16 +166,15 @@ async function getRecipes(ingredient) {
             chosenImg.setAttribute("src", data.hits[i].recipe.image);
             chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
             chosenRecipe.innerHTML = "Get the full recipe";
-            chosenIngr.innerHTML = clickedIngr[i];
             chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
             chosenCaut.innerHTML = clickedCautions[i];
         });
     }
-    for (let i = 3; i < 9; i++) {
-        cards[i].style.opacity = "0";
-        cards[i].style.zIndex = "0";
-
+    ingrList.innerHTML = "";
+    for (let i = 0; i < clickedIngr.length; i++) {
+        ingrList.innerHTML += `<li> ${ingrList[i]}</li>`;
     }
+
 }
 
 // check for an accesskey, otherwise get one
