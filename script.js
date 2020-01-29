@@ -9,6 +9,7 @@ let chosenCaut = document.getElementById("caut");
 let chosenRecipe = document.getElementById("fullRecipe");
 let ingrList = document.getElementById("ingrList");
 let cautList = document.getElementById("cautList");
+let container = document.getElementById("container");
 let chosenLabel = document.getElementById("chosenLabel");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
@@ -42,7 +43,9 @@ let page = 1;
 
 async function getRecipes(ingredient) {
 
-
+    for (let i = 0; i < 3; i++) {
+        cards[i].style.opacity = "1";
+    }
     // Button stuff, Handmade carousel
     for (let btn of buttons) {
         btn.style.visibility = "visible";
@@ -118,7 +121,6 @@ async function getRecipes(ingredient) {
     for (let i = 3; i < 9; i++) {
         cards[i].style.opacity = "0";
         cards[i].style.zIndex = "0";
-
     }
 
     // Fetch data
@@ -140,6 +142,8 @@ async function getRecipes(ingredient) {
 
         // Listen to cards for when recipe is chosen
         cards[i].addEventListener("click", function () {
+            container.style.gridTemplateRows = "0.25fr 1fr 0.5fr 0.1fr 1fr 1fr 0.5fr 0.1fr";
+
             console.log(cards[i].id);
             if (ingrList.hasChildNodes()){
                 for (let j = 0; j < clickedIngr.length; j++) {
