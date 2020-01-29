@@ -7,7 +7,7 @@ body {
     grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
     grid-column-gap: 1em;
     grid-row-gap: 1em;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr 3fr 1fr;
 }
 
 #topSection {
@@ -120,3 +120,20 @@ body {
     height: auto;
 }
 
+#chosenImgDiv{
+    grid-row: 4/5;
+    grid-column: 2/3;
+}
+#cals{
+    grid-row: 4/5;
+    grid-column: 3/4;
+}
+#ingr{
+    grid-row: 4/5;
+    grid-column: 3/4;
+}
+
+#caut, #fullRecipeDiv{
+    grid-row: 4/5;
+    grid-column: 4/5;
+}

@@ -2,6 +2,11 @@ let buttons = document.querySelectorAll(".carouselBtn");
 let nxtBtn = document.getElementById("nxtBtn");
 let prvBtn = document.getElementById("prvBtn");
 let cards = document.getElementsByClassName("cards");
+let chosenImg = document.getElementById("chosenImg");
+let chosenIngr = document.getElementById("ingr");
+let chosenCals = document.getElementById("cals");
+let chosenCaut = document.getElementById("caut");
+let chosenRecipe = document.getElementById("fullRecipe");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -40,6 +45,7 @@ async function getRecipes(ingredient) {
     }
     const recipes = await fetch(path);
     const data = await recipes.json();
+    console.log(data);
     let recipeTitle = [];
     let recipeImg = [];
     let recipeIngr = [];
@@ -51,12 +57,39 @@ async function getRecipes(ingredient) {
         recipeTime.push(data.hits[i].recipe.totalTime);
         recipeCals.push(Math.floor(data.hits[i].recipe.calories));
     }
+    let clickedIngr = [];
+    let clickedCautions = [];
+    let clickedRecipe = [];
+    let clickedCal = [];
+    let clickedImg = [];
     for (let i = 0; i < cards.length; i++) {
         cards[i].children[0].innerHTML = recipeTitle[i];
         cards[i].children[1].children[0].setAttribute("src", recipeImg[i]);
+
+        cards[i].addEventListener("click", function () {
+            console.log(cards[i].id);
+            clickedImg = [];
+            clickedIngr = [];
+            clickedCautions = [];
+            clickedRecipe = [];
+            clickedCal = [];
+            clickedCal.push(data.hits[i].recipe.calories);
+            clickedIngr.push(data.hits[i].recipe.ingredientLines);
+            clickedRecipe.push(data.hits[i].recipe.url);
+            clickedCautions.push(data.hits[i].recipe.healthLabels);
+            clickedImg.push(data.hits[i].recipe.image);
+            chosenImg.setAttribute("src", clickedImg[0]);
+            chosenRecipe.setAttribute("href", chosenRecipe[i]);
+            chosenIngr.innerHTML = clickedIngr[i];
+            chosenCals.innerHTML = clickedCal[i];
+            chosenCaut.innerHTML = clickedCautions[i];
+        });
+
     }
     for (let i = 3; i < 9; i++) {
         cards[i].style.opacity = "0";
+        cards[i].style.display = "none";
+
     }
     buttons.forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -75,28 +108,39 @@ async function getRecipes(ingredient) {
             if (page === 1) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "1";
+                    cards[i].style.display = "block";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
             if (page === 2) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "1";
+                    cards[i].style.display = "block";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
@@ -104,14 +148,22 @@ async function getRecipes(ingredient) {
             if (page === 3) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
                     cards[i].style.opacity = "0";
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
                     cards[i].style.opacity = "1";
+                    cards[i].style.display = "block";
+
+                    cards[i].style.display = "none";
+
                     cards[i].style.transition = "all 0.5s linear";
                 }
             }
