@@ -22,9 +22,12 @@ document.getElementById("run").addEventListener("click", function () {
 });
 
 function printWine(param) {
-    if (param.pairedWines === undefined && param.productMatches === undefined) {
+    if (param.pairedWines.length == 0 && param.productMatches.length == 0 && param.pairingText == "") {
+        document.getElementById("pairingText").innerHTML = "freestyle your drinks";
+    } else if (param.pairedWines.length == 0 && param.productMatches.length == 0){
         document.getElementById("pairingText").innerHTML = param.pairingText;
-    } else {
+    }
+    else {
         document.getElementById("pairedWines").innerHTML = param.pairedWines[0];
         document.getElementById("pairingText").innerText = param.pairingText;
     }
