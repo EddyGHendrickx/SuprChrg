@@ -13,7 +13,6 @@ let container = document.getElementById("container");
 let chosenLabel = document.getElementById("chosenLabel");
 let recipeButton = document.getElementById("fullRecipeButton");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
-const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
 const REDIRECT_URI = 'redirect_uri=http://localhost:12345/';
@@ -32,6 +31,7 @@ let page = 1;
         });
 
         document.getElementById('spotify').addEventListener('click', function () {
+
             loginSpotify(ingredientsInput).catch(error => {
                 console.log(error);
             });
