@@ -11,6 +11,7 @@ let ingrList = document.getElementById("ingrList");
 let cautList = document.getElementById("cautList");
 let container = document.getElementById("container");
 let chosenLabel = document.getElementById("chosenLabel");
+let recipeButton = document.getElementById("fullRecipeButton");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -142,7 +143,7 @@ async function getRecipes(ingredient) {
 
         // Listen to cards for when recipe is chosen
         cards[i].addEventListener("click", function () {
-
+            recipeButton.style.visibility = "visible";
             console.log(cards[i].id);
             if (ingrList.hasChildNodes()){
                 for (let j = 0; j < clickedIngr.length; j++) {

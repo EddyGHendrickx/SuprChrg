@@ -151,6 +151,10 @@
     justify-content: center;
 }
 
+#fullRecipeButton {
+    visibility: hidden;
+}
+
 @media only screen and (max-width: 600px) {
     #container {
         display: grid;
