@@ -42,7 +42,6 @@ img {
 
 #ingredientsInput {
     width: 90%;
-    display: grid;
 }
 
 #carousel1, #carousel4, #carousel7 {
@@ -122,6 +121,7 @@ img {
 }
 
 #wineScoreBar {
+    grid-area: p1;
     margin-right: 25vw;
     background-color: red;
     border-bottom-right-radius: 50vmin;
@@ -135,9 +135,7 @@ img {
 
 
 #spotifyImg {
-    align-self: stretch;
     width: 5vw;
-    height: auto;
 }
 
 #chosenImgSection {
@@ -161,4 +159,26 @@ img {
     grid-area: cL;
     display: flex;
     justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    #container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5vh;
+        grid-row-gap: 5vh;
+        grid-template-rows: 0.25fr repeat(9, 1fr);
+        grid-template-areas:
+                "tS tS"
+                "crsl1 crsl1"
+                "crsl2 crsl2"
+                "crsl3 crsl3"
+                "btn1 btn2"
+                "p1 p2"
+                "cL cL"
+                "chosenImg chosenImg"
+                "ingr ingr"
+                "eI eI"
+                ;
+    }
 }
