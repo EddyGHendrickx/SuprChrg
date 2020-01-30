@@ -36,6 +36,7 @@
 
 #ingredientsInput {
     width: 90%;
+    display: grid;
 }
 
 #carousel1, #carousel4, #carousel7 {
@@ -109,7 +110,6 @@
     overflow: hidden;
 }
 #wineScoreBar {
-    grid-area: p1;
     margin-right: 25vw;
     background-color: red;
     border-bottom-right-radius: 50vmin;
@@ -120,8 +120,10 @@
 #wineScoreBar:hover {
     margin-right: 5vw;
 }
+
 #spotifyBar:hover {
     margin-left: 5vw;
+>>>>>>> 4d8006e925fd6886937ec0e033ee02b71cd1f766
 }
 
 #chosenImgSection {
