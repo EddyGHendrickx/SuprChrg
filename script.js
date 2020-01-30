@@ -57,7 +57,7 @@ async function getRecipes(ingredient) {
                 if (page === 0){
                     page = 3;
                 }
-            } else {
+            } else if(btn.id === "nxtBtn") {
                 page++;
                 if (page === 4){
                     page = 1;
