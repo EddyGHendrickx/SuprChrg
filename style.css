@@ -3,6 +3,8 @@
 }
 
 #container {
+    margin: auto;
+    width: 95vw;
     object-fit: fill;
     display: grid;
     grid-template-columns: 1fr repeat(3, 3fr) 1fr;
@@ -94,7 +96,7 @@
     overflow: hidden;
 }
 #spotifyBar {
-    padding-right: 10vmax;
+    height: 15vh;
     grid-area: p2;
     margin-left: 25vw;
     background-color: red;
@@ -110,6 +112,7 @@
     overflow: hidden;
 }
 #wineScoreBar {
+    height: 15vh;
     margin-right: 25vw;
     background-color: red;
     border-bottom-right-radius: 50vmin;
@@ -123,7 +126,6 @@
 
 #spotifyBar:hover {
     margin-left: 5vw;
->>>>>>> 4d8006e925fd6886937ec0e033ee02b71cd1f766
 }
 
 #chosenImgSection {
