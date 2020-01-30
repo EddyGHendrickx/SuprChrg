@@ -11,6 +11,7 @@ let ingrList = document.getElementById("ingrList");
 let cautList = document.getElementById("cautList");
 let container = document.getElementById("container");
 let chosenLabel = document.getElementById("chosenLabel");
+let recipeButton = document.getElementById("fullRecipeButton");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYSECRETID = "bbda1903d8584c76bcb59a98ba731031";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
@@ -21,13 +22,11 @@ let page = 1;
 
 (function () {
 
-    // Hide carousel buttons
-
-
     document.getElementById("run").addEventListener("click", function () {
 
         // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
+
         getRecipes(ingredientsInput).catch(error => {
             console.log(error);
         });
@@ -134,28 +133,28 @@ async function getRecipes(ingredient) {
     let clickedIngr = [];
     let clickedCautions = [];
 
-
-
     for (let i = 0; i < cards.length; i++) {
         cards[i].children[0].innerHTML = data.hits[i].recipe.label;
         cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
 
         // Listen to cards for when recipe is chosen
         cards[i].addEventListener("click", function () {
-            container.style.gridTemplateRows = "0.25fr 1fr 0.5fr 0.1fr 1fr 1fr 0.5fr 0.1fr";
-
+            recipeButton.style.visibility = "visible";
             console.log(cards[i].id);
-            if (ingrList.hasChildNodes()){
+
+            // Remove child nodes on new load
+            if (ingrList.hasChildNodes()) {
                 for (let j = 0; j < clickedIngr.length; j++) {
                     ingrList.removeChild(ingrList.childNodes[0]);
                 }
             }
-            if (cautList.hasChildNodes()){
+            if (cautList.hasChildNodes()) {
                 for (let i = 0; i < clickedCautions.length; i++) {
                     cautList.removeChild(cautList.childNodes[0]);
                 }
             }
-            chosenLabel.innerHTML = data.hits[i].recipe.label;
+
+            // Make arrays and fill with ingredients and cautions
             clickedIngr = [];
             clickedCautions = [];
             for (let j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
@@ -164,6 +163,8 @@ async function getRecipes(ingredient) {
             for (let j = 0; j < data.hits[i].recipe.healthLabels.length; j++) {
                 clickedCautions.push(data.hits[i].recipe.healthLabels[j]);
             }
+
+            // Append the list of cautions and ingredients to the html
             for (let j = 0; j < clickedIngr.length; j++) {
                 ingrList.innerHTML += `<li> ${clickedIngr[j]}</li>`;
             }
@@ -171,23 +172,18 @@ async function getRecipes(ingredient) {
                 cautList.innerHTML += `<li>${clickedCautions[j]}</li>`;
             }
 
-            console.log("ingr:", clickedIngr);
-            console.log("caut:", clickedCautions);
-
+            // Set information to divs when recipe is chosen
             chosenImg.setAttribute("src", data.hits[i].recipe.image);
             chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
+            chosenLabel.innerHTML = data.hits[i].recipe.label;
             chosenRecipe.innerHTML = "Get the full recipe";
             chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
-
         });
     }
-    console.log(clickedCautions);
-
-
-
 }
 
-// check for an accesskey, otherwise get one
+// Spotify Code
+// Check for an accesskey, otherwise get one
 token = window.location.hash.substr(1).split('&')[0].split("=")[1];
 if (token) {
     window.opener.spotifyCallback(token)
@@ -218,23 +214,19 @@ function loginSpotify(ingredient) {
 function setSpotifyInfo(playlistObj) {
 
     if (playlistObj.error) {
-        document.getElementById('spotifyDescription').innerHTML = 'Sorry no playlists available';
+        document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
     }
     else {
         let playlistArray = playlistObj.playlists.items;
-        let playlistId = playlistArray[0].id;
-        console.log(playlistId);
+
         let playlistPicture = playlistArray[0].images[0].url;
-        console.log(playlistPicture);
         let playlistName = playlistArray[0].name;
-        console.log(playlistName);
         let playlistExternalUrl = playlistArray[0].external_urls.spotify;
-        console.log(playlistExternalUrl);
-        let playlistDescription = playlistArray[0].description;
-        console.log(playlistDescription);
 
         document.getElementById('spotifyImg').src = playlistPicture;
-        document.getElementById('spotifyDescription').innerHTML = playlistDescription;
+        document.getElementById('spotifyInfoBox').innerHTML = playlistName;
+
+        // Link the image to the playlist
         document.getElementById('spotifyImg').addEventListener('click', function () {
             window.open(playlistExternalUrl, playlistName, 'width=600, height=600');
         });

@@ -3,8 +3,10 @@
 <head>
     <!-- SEO requirements -->
     <title>What The Fridge</title>
-    <meta name="description" content="A site to suggest recipes from random ingredients in your fridge, with wine and music suggestions to match">
-    <meta name="og:What The Fridge" property="og:website" content="What the fridge - for when you're not sure what to cook">
+    <meta content="A site to suggest recipes from random ingredients in your fridge, with wine and music suggestions to match"
+          name="description">
+    <meta content="What the fridge - for when you're not sure what to cook" name="og:What The Fridge"
+          property="og:website">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154475825-2"></script>
@@ -99,25 +101,23 @@
 
     <section class="carouselBtn" id="spotify">
         <section id="spotifyBar">
-            <img alt="" id="spotifyImg" src="image/spotify.png">
-            <p id="spotifyDescription">Need a playlist Suggestion?</p>
+
         </section>
-    </section>
-    <section id="chosenLabelsection">
-        <p id="chosenLabel"></p>
     </section>
 
 
 
     <section class="carouselBtn" id="wineScore">
         <section id="wineScoreBar">
-            <p id="pairedWines"></p>
-            <p id="pairingText"></p>
-            <p id="productMatches"></p>
+
         </section>
     </section>
 
-    <section id="chosenImgsection">
+    <section id="chosenLabelSection">
+        <p id="chosenLabel"></p>
+    </section>
+
+    <section id="chosenImgSection">
         <img alt="" id="chosenImg">
     </section>
     <section id="ingr">
@@ -131,9 +131,18 @@
             <ul id="cautList"></ul>
         </section>
 
-        <section id="fullRecipesection">
-            <button><a id="fullRecipe"></a></button>
+        <section id="fullRecipeSection">
+            <button id="fullRecipeButton"><a id="fullRecipe"></a></button>
         </section>
+    </section>
+    <section id="wineInfo">
+        <p id="pairedWines"></p>
+        <p id="pairingText"></p>
+        <p id="productMatches"></p>
+    </section>
+    <section id="spotifyInfo">
+        <img src="" id="spotifyImg"/>
+        <p id="spotifyInfoBox"></p>
     </section>
 </section>
 
