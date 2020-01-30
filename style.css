@@ -100,10 +100,11 @@
     height: 15vh;
     grid-area: p2;
     margin-left: 25vw;
-    background-color: red;
-    border-bottom-left-radius: 50vmin;
-    border-top-left-radius: 50vmin;
     transition: all 1s ease-in-out;
+    background-image: url("image/spotify.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+
 }
 
 #wineScore {
@@ -113,12 +114,14 @@
     overflow: hidden;
 }
 #wineScoreBar {
+
     height: 15vh;
     margin-right: 25vw;
-    background-color: red;
     border-bottom-right-radius: 50vmin;
     border-top-right-radius: 50vmin;
     transition: all 1s ease-in-out;
+    background-image: url("image/wine.png");
+    background-size: contain;
 }
 
 #wineScoreBar:hover {
@@ -127,6 +130,8 @@
 
 #spotifyBar:hover {
     margin-left: 5vw;
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 #chosenImgSection {
@@ -157,6 +162,13 @@
 #fullRecipeButton {
     visibility: hidden;
 }
+
+.penisButton {
+    height: 30%;
+    width: 30%;
+    margin-top: 4vh;
+}
+
 
 @media only screen and (max-width: 600px) {
     #container {
