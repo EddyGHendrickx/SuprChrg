@@ -218,7 +218,7 @@ function loginSpotify(ingredient) {
 function setSpotifyInfo(playlistObj) {
 
     if (playlistObj.error) {
-        document.getElementById('spotifyDescription').innerHTML = 'Sorry no playlists available';
+        document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
     }
     else {
         let playlistArray = playlistObj.playlists.items;
@@ -234,7 +234,7 @@ function setSpotifyInfo(playlistObj) {
         console.log(playlistDescription);
 
         document.getElementById('spotifyImg').src = playlistPicture;
-        document.getElementById('spotifyDescription').innerHTML = playlistDescription;
+        document.getElementById('spotifyInfoBox').innerHTML = playlistDescription;
         document.getElementById('spotifyImg').addEventListener('click', function () {
             window.open(playlistExternalUrl, playlistName, 'width=600, height=600');
         });
