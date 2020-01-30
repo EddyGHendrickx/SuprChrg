@@ -1,19 +1,13 @@
-body {
-    margin: auto;
-}
-
-img {
-    object-fit: scale-down;
-}
-
 #carousel1, #carousel2, #carousel3 {
     z-index: 100;
 }
 
 #container {
+    object-fit: fill;
     display: grid;
-    grid-column-gap: 5vh;
-    grid-row-gap: 5vh;
+    grid-template-columns: 1fr repeat(3, 3fr) 1fr;
+    grid-column-gap: 2vmax;
+    grid-row-gap: 2vmax;
     grid-template-areas:
     ". .  tS . ."
     "btn1 crsl1 crsl2 crsl3 btn2"
@@ -82,7 +76,6 @@ img {
 #nxtBtn {
     visibility: hidden;
     grid-area: btn2;
-
     align-self: center;
 }
 
@@ -100,6 +93,7 @@ img {
     overflow: hidden;
 }
 #spotifyBar {
+    padding-right: 10vmax;
     grid-area: p2;
     margin-left: 25vw;
     background-color: red;
@@ -173,6 +167,9 @@ img {
                 "eI eI"
                 "wineI wineI"
                 ;
+    }
+    #spotifyBar {
+        margin-right: -5vw;
     }
     #wineScoreBar {
         margin-left: -25vw;

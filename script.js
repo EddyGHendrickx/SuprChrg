@@ -142,7 +142,6 @@ async function getRecipes(ingredient) {
 
         // Listen to cards for when recipe is chosen
         cards[i].addEventListener("click", function () {
-            container.style.gridTemplateRows = "0.25fr 1fr 0.5fr 0.1fr 1fr 1fr 0.5fr 0.1fr";
 
             console.log(cards[i].id);
             if (ingrList.hasChildNodes()){
