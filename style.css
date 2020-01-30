@@ -123,7 +123,6 @@
 
 #spotifyBar:hover {
     margin-left: 5vw;
->>>>>>> 4d8006e925fd6886937ec0e033ee02b71cd1f766
 }
 
 #chosenImgSection {
@@ -147,6 +146,10 @@
     grid-area: cL;
     display: flex;
     justify-content: center;
+}
+
+#fullRecipeButton {
+    visibility: hidden;
 }
 
 @media only screen and (max-width: 600px) {
