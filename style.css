@@ -42,6 +42,7 @@ img {
 
 #ingredientsInput {
     width: 90%;
+    display: grid;
 }
 
 #carousel1, #carousel4, #carousel7 {
@@ -121,7 +122,6 @@ img {
 }
 
 #wineScoreBar {
-    grid-area: p1;
     margin-right: 25vw;
     background-color: red;
     border-bottom-right-radius: 50vmin;
@@ -135,7 +135,9 @@ img {
 
 
 #spotifyImg {
+    align-self: stretch;
     width: 5vw;
+    height: auto;
 }
 
 #chosenImgSection {
