@@ -6,26 +6,26 @@ img {
     object-fit: scale-down;
 }
 
-
-
 #carousel1, #carousel2, #carousel3 {
     z-index: 100;
 }
 
 #container {
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
     grid-column-gap: 5vh;
     grid-row-gap: 5vh;
-    grid-template-rows: 0.25fr 1fr;
     grid-template-areas:
     ". .  tS . ."
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
     "cL cL cL cL cL"
-    ". chosenImg ingr eI .";
+    ". chosenImg ingr eI ."
+    ". wineI wineI wineI .";
 }
 
+#wineInfo {
+    grid-area: wineI;
+}
 #topSection {
     grid-area: tS;
     width: auto;
@@ -99,7 +99,6 @@ img {
     display: grid;
     overflow: hidden;
 }
-
 #spotifyBar {
     grid-area: p2;
     margin-left: 25vw;
@@ -109,17 +108,12 @@ img {
     transition: all 1s ease-in-out;
 }
 
-#spotifyBar:hover {
-    margin-left: 5vw;
-}
-
 #wineScore {
     grid-area: p1;
     visibility: hidden;
     display: grid;
     overflow: hidden;
 }
-
 #wineScoreBar {
     grid-area: p1;
     margin-right: 25vw;
@@ -132,10 +126,8 @@ img {
 #wineScoreBar:hover {
     margin-right: 5vw;
 }
-
-
-#spotifyImg {
-    width: 5vw;
+#spotifyBar:hover {
+    margin-left: 5vw;
 }
 
 #chosenImgSection {
@@ -179,6 +171,10 @@ img {
                 "chosenImg chosenImg"
                 "ingr ingr"
                 "eI eI"
+                "wineI wineI"
                 ;
+    }
+    #wineScoreBar {
+        margin-left: -25vw;
     }
 }
