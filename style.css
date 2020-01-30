@@ -1,3 +1,10 @@
+html {
+    scroll-behavior: smooth;
+}
+.cards {
+    text-decoration: none;
+    color: black;
+}
 #carousel1, #carousel2, #carousel3 {
     z-index: 100;
 }
