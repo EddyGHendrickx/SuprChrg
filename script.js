@@ -184,30 +184,34 @@ async function getRecipes(ingredient) {
 
 // Spotify Code
 // Check for an accesskey, otherwise get one
-token = window.location.hash.substr(1).split('&')[0].split("=")[1];
+/*token = window.location.hash.substr(1).split('&')[0].split("=")[1];
 if (token) {
     window.opener.spotifyCallback(token)
-}
+}*/
 
 // Popup a window and return the key that spotify returned
 function loginSpotify(ingredient) {
     let path = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
-    let popup = window.open(path, 'Login in with Spotify', 'width=600, height=400');
+    let accessKeyNeil = 'BQDF5fmaJoon9YbuSG9JWKOvhc_w6YcwE6UrqmTdj96doCOoukPfI8HdjRUT4jO1NRp3DMBFbIL-fv_fte45dAqOU_Ki61dylq2r2WQzZhpfgEOg2RH50iXcC9QogI5Qv3HhaUrdczYmEyHKOgQCnC8pgQ513jU';
 
+    // This is old code for popup windows and individual login
+    /*    let popup = window.open(path, 'Login in with Spotify', 'width=600, height=400');
     window.spotifyCallback = function(accessKey) {
+        console.log(accessKey);
         popup.close();
+        */
 
         ingredient = 'q=' + ingredient;
         fetch('https://api.spotify.com/v1/search?' + ingredient + '&type=playlist', {
             headers: {
-                'Authorization': `Bearer ${accessKey}`
+                'Authorization': `Bearer ${accessKeyNeil}`
             }
         }).then(response => {
             return response.json();
         }).then(data => {
             setSpotifyInfo(data);
         })
-    }
+    /*}*/
 }
 
 // Set Playlist info in Div
