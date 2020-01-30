@@ -1,0 +1,189 @@
+#carousel1, #carousel2, #carousel3 {
+    z-index: 100;
+}
+
+#container {
+    margin: auto;
+    width: 95vw;
+    object-fit: fill;
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 3fr) 1fr;
+    grid-column-gap: 2vmax;
+    grid-row-gap: 2vmax;
+    grid-template-areas:
+    ". . tS . ."
+    "btn1 crsl1 crsl2 crsl3 btn2"
+    "p1 p1 . p2 p2"
+    "cL cL cL cL cL"
+    ". chosenImg ingr eI ."
+    ". wineI wineI wineI ."
+    ". sInfo sInfo sInfo .";
+}
+
+#wineInfo {
+    grid-area: wineI;
+}
+#topSection {
+    grid-area: tS;
+    width: auto;
+    display: flex;
+    height: 3em;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+#searchBar {
+    display: flex;
+    justify-content: center;
+}
+
+#ingredientsInput {
+    width: 90%;
+    display: grid;
+}
+
+#carousel1, #carousel4, #carousel7 {
+    display: flex;
+    grid-area: crsl1;
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    background-color: red;
+    opacity: 0;
+}
+
+#carousel1:hover, #carousel2:hover, #carousel3:hover, #carousel4:hover, #carousel5:hover, #carousel7:hover, #carousel8:hover, #carousel9:hover {
+    background-color: darkred;
+    box-shadow: .1em .1em black;
+}
+
+#carousel2, #carousel5, #carousel8 {
+    display: flex;
+    grid-area: crsl2;
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    background-color: red;
+    opacity: 0;
+}
+
+#carousel3, #carousel6, #carousel9 {
+    display: flex;
+    grid-area: crsl3;
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    background-color: red;
+    opacity: 0;
+}
+
+#nxtBtn {
+    visibility: hidden;
+    grid-area: btn2;
+    align-self: center;
+}
+
+#prvBtn {
+    grid-area: btn1;
+    visibility: hidden;
+    align-self: center;
+}
+
+
+#spotify {
+    grid-area: p2;
+    visibility: hidden;
+    display: grid;
+    overflow: hidden;
+}
+#spotifyBar {
+    height: 15vh;
+    grid-area: p2;
+    margin-left: 25vw;
+    background-color: red;
+    border-bottom-left-radius: 50vmin;
+    border-top-left-radius: 50vmin;
+    transition: all 1s ease-in-out;
+}
+
+#wineScore {
+    grid-area: p1;
+    visibility: hidden;
+    display: grid;
+    overflow: hidden;
+}
+#wineScoreBar {
+    height: 15vh;
+    margin-right: 25vw;
+    background-color: red;
+    border-bottom-right-radius: 50vmin;
+    border-top-right-radius: 50vmin;
+    transition: all 1s ease-in-out;
+}
+
+#wineScoreBar:hover {
+    margin-right: 5vw;
+}
+
+#spotifyBar:hover {
+    margin-left: 5vw;
+}
+
+#chosenImgSection {
+    grid-area: chosenImg;
+}
+
+#ingr {
+    grid-area: ingr;
+}#spotifyInfo {
+    grid-area: sInfo;
+ }
+
+#extraInfo {
+    grid-area: eI;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#chosenLabelSection {
+    grid-area: cL;
+    display: flex;
+    justify-content: center;
+}
+
+#fullRecipeButton {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    #container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5vh;
+        grid-row-gap: 5vh;
+        grid-template-rows: 0.25fr repeat(9, 1fr);
+        grid-template-areas:
+                "tS tS"
+                "crsl1 crsl1"
+                "crsl2 crsl2"
+                "crsl3 crsl3"
+                "btn1 btn2"
+                "p1 p2"
+                "cL cL"
+                "chosenImg chosenImg"
+                "ingr ingr"
+                "eI eI"
+                "wineI wineI"
+                "sInfo sInfo"
+                ;
+    }
+    #spotifyBar {
+        margin-right: -5vw;
+    }
+    #wineScoreBar {
+        margin-left: -25vw;
+    }
+}
