@@ -113,6 +113,9 @@ html {
     transform: scaleX(-1);
 }
 
+#nxtBtn:hover, #prvBtn:hover {
+    opacity: 0.7;
+}
 
 #spotify {
     grid-area: p2;
