@@ -36,7 +36,7 @@ button > img {
 }
 
 body {
-    background-color: #E7E8D5;
+    background-color: #EBF0E6;
 }
 #container {
     margin: auto;
@@ -166,6 +166,7 @@ body {
     display: grid;
     overflow: hidden;
 }
+
 #spotifyBar {
     height: 15vh;
     margin-left: 26vw;
@@ -178,7 +179,7 @@ body {
 
 }
 
-#wineScore {
+#wineScore{
     grid-area: p1;
     visibility: hidden;
     display: grid;
@@ -237,11 +238,11 @@ body {
     justify-content: center;
 }
 #chosenLabel{
-
+    font-size: 50px;
 }
 
 #fullRecipeButton {
-    visibility: hidden;
+    display: none;
 }
 
 .penisButton {

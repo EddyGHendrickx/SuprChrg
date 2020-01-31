@@ -62,7 +62,7 @@ async function getRecipes(ingredient, healthLabel) {
 
     // Button stuff, Handmade carousel
     for (let btn of BUTTONS) {
-        btn.style.visibility = "visible";
+        btn.style.display = "block";
     }
     BUTTONS.forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -154,7 +154,10 @@ async function getRecipes(ingredient, healthLabel) {
 
         // Listen to cards for when recipe is chosen
         CARDS[i].addEventListener("click", function () {
+
+            RECIPE_BUTTON.style.display = "block";
             RECIPE_BUTTON.style.visibility = "visible";
+
             console.log(CARDS[i].id);
 
             // Remove child nodes on new load
