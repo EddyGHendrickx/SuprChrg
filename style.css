@@ -17,7 +17,10 @@ li{
 #carousel1, #carousel2, #carousel3 {
     z-index: 100;
 }
-/*Let's make this shit purdy*/
+
+body {
+    background-color: #FFFFE7;
+}
 #container {
     margin: auto;
     width: 95vw;
@@ -78,12 +81,10 @@ li{
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
 #carousel1:hover, #carousel2:hover, #carousel3:hover, #carousel4:hover, #carousel5:hover, #carousel7:hover, #carousel8:hover, #carousel9:hover {
-    background-color: darkred;
     box-shadow: .1em .1em black;
 }
 
@@ -93,7 +94,6 @@ li{
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
@@ -102,8 +102,6 @@ li{
     grid-area: crsl3;
     justify-content: center;
     flex-direction: column-reverse;
-    align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
