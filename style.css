@@ -159,25 +159,29 @@ html {
     cursor: pointer;
 }
 
+#container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
 #chosenImgSection {
     grid-area: chosenImg;
 }
 
 #ingr {
     grid-area: ingr;
-    
-}#spotifyInfo {
-    grid-area: sInfo;
- }
+
+}
 
 #extraInfo {
     grid-area: eI;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
 }
+
+#spotifyInfo {
+    grid-area: sInfo;
+ }
 
 #chosenLabelSection {
     grid-area: cL;
