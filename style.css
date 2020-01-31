@@ -39,6 +39,10 @@ body {
     ". wineI . sInfo .";
 }
 
+.cards > section > img {
+    border-radius: 50%;
+}
+
 #header {
     font-family: 'Courgette', cursive;
     grid-area: hdr;
