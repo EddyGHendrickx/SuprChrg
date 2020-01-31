@@ -26,7 +26,7 @@ let page = 1;
 
         // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
-        healthInput = `q=health=${document.getElementById("healthLabel").value}`;
+        healthInput = `&health=${document.getElementById("healthLabel").value}`;
         if (healthInput == 0) {
             getRecipes(ingredientsInput).catch(error => {
                 console.log(error);
@@ -130,8 +130,8 @@ async function getRecipes(ingredient, healthLabel) {
     }
 
     // Fetch data
-    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722" + healthLabel;
-    let path = "tomato.json";
+    let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722" + healthLabel;
+    //let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
     console.log(data);
