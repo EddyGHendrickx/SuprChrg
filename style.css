@@ -48,6 +48,12 @@ body {
     -webkit-box-shadow: 5px 5px 10px #E3D1C5;
     box-shadow:         5px 5px 10px #E3D1C5;
 }
+
+/*.cards > section > img:hover {*/
+/*    border: black solid 1px;*/
+/*}*/
+
+
 #header {
     font-family: 'Courgette', cursive;
     grid-area: hdr;
@@ -92,6 +98,7 @@ body {
     align-items: center;
     opacity: 0;
 }
+
 
 /*#carousel1:hover, #carousel2:hover, #carousel3:hover, #carousel4:hover, #carousel5:hover, #carousel7:hover, #carousel8:hover, #carousel9:hover {
     box-shadow: .1em .1em black;
