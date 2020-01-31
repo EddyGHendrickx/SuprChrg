@@ -52,6 +52,8 @@ async function getRecipes(ingredient, healthLabel) {
     for (let i = 0; i < 3; i++) {
         cards[i].style.opacity = "1";
     }
+    chosenLabel.innerHTML = "";
+
     // Button stuff, Handmade carousel
     for (let btn of buttons) {
         btn.style.visibility = "visible";
