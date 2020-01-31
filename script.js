@@ -14,7 +14,7 @@ const WINE_API_KEY = "c7a302895e054e629add1f2d96bf5b3f";
 const EDAMAM_APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFY_CLIENT_ID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
-const REDIRECT_URI = 'redirect_uri=http://localhost:12345/';
+const REDIRECT_URI = 'redirect_uri=https://eddyghendrickx.github.io/WhatTheFridge/';
 const TOKEN_TYPE = 'response_type=token';
 let HEALTH_INPUT = document.getElementById("healthLabel");
 let page = 1;
@@ -142,7 +142,6 @@ async function getRecipes(ingredient, healthLabel) {
     //let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
-    console.log(data);
 
     // Adding info to cards
     let clickedIngr = [];
@@ -244,12 +243,10 @@ function setSpotifyInfo(playlistObj) {
 }
 
 // Wine API
-async function getWine() {
-    //let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${WINE_API_KEY}`);
-    let tempResponse = "blueCheese.json";
-    const wines = await fetch(tempResponse);
-    let data = await wines.json();
-    //data = await response.json();
+async function getWine(ingredientsInput) {
+    let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${WINE_API_KEY}`);
+    let data = await response.json();
+    console.log(data);
     printWine(data);
 }
 
