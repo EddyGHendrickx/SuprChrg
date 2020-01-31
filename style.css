@@ -1,6 +1,15 @@
 html {
     scroll-behavior: smooth;
+
 }
+li{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#chosenLabel, #pairingText, #pairedWines, #cals, .cards {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .cards {
     text-decoration: none;
     color: black;
@@ -28,6 +37,7 @@ html {
 }
 
 #header {
+    font-family: 'Courgette', cursive;
     grid-area: hdr;
     display: flex;
     flex-wrap: nowrap;
@@ -48,6 +58,7 @@ html {
     background-image: url("image/backgroundimage.jpg");
     background-size: cover;
     padding: 10em;
+
     /*margin: 3vh 0 0 -30px;*/
 }
 
@@ -192,6 +203,9 @@ html {
     display: flex;
     justify-content: center;
 }
+#chosenLabel{
+
+}
 
 #fullRecipeButton {
     visibility: hidden;
@@ -201,6 +215,8 @@ html {
     height: 30%;
     width: 30%;
     margin-top: 4vh;
+}
+#pairingText{
 }
 
 
