@@ -192,6 +192,7 @@ li{
 }
 
 #spotifyInfo {
+    visibility: hidden;
     grid-area: sInfo;
  }
 
