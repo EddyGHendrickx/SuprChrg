@@ -225,10 +225,10 @@ function setSpotifyInfo(playlistObj) {
         document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
     } else {
         let playlistArray = playlistObj.playlists.items;
-        console.log(playlistArray);
 
-        let playlistName = playlistArray[0].name;
+        // Randomize playlist choice
+        let playlistId = playlistArray[Math.floor(Math.random() * playlistArray.length)].id;
 
-        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistArray[0].id + '/';
+        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
     }
 }
