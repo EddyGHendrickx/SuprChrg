@@ -47,7 +47,7 @@ body {
     grid-column-gap: 2vmax;
     grid-row-gap: 2vmax;
     grid-template-areas:
-    "hdr hdr hdr hdr hdr"
+    ". hdr hdr . ."
     "tS tS tS tS tS"
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
@@ -73,6 +73,7 @@ body {
 
 #header {
     font-family: 'Courgette', cursive;
+    font-size: 30px;
     grid-area: hdr;
     display: flex;
     flex-wrap: nowrap;
@@ -280,6 +281,14 @@ body {
                 ;
     }
 
+    #header {
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        margin: 0;
+        font-size: 20px;
+    }
+    
     #container-flex {
         display: flex;
         flex-direction: column;
@@ -318,6 +327,14 @@ body {
                 "wineI wineI"
                 "sInfo sInfo"
     ;
+    }
+
+    #header {
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        margin: 0;
+        font-size: 20px;
     }
 
     #container-flex {
