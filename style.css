@@ -5,6 +5,23 @@ html {
 li{
     font-family: 'Josefin Sans', sans-serif;
 }
+input {
+    border-radius: 10px;
+    margin-right: 1em;
+}
+
+button > img {
+    height: 2.5em;
+    width: 2.5em;
+    transform: scaleX(-1);
+}
+#healthLabel {
+    margin-right: 1em;
+    border-radius: 10px;
+}
+#run {
+    border-radius: 50%;
+}
 
 #chosenLabel, #pairingText, #pairedWines, #cals, .cards {
     font-family: 'Josefin Sans', sans-serif;
