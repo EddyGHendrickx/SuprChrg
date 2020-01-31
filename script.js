@@ -1,21 +1,22 @@
-let BUTTONS = document.querySelectorAll(".carouselBtn");
-let NXTBTN = document.getElementById("nxtBtn");
-let PRVBTN = document.getElementById("prvBtn");
-let CARDS = document.getElementsByClassName("cards");
-let CHOSENIMG = document.getElementById("chosenImg");
-let CHOSENCALS = document.getElementById("cals");
-let CHOSENRECIPE = document.getElementById("fullRecipe");
-let INGRLIST = document.getElementById("ingrList");
-let CAUTLIST = document.getElementById("cautList");
-let CHOSENLABEL = document.getElementById("chosenLabel");
-let RECIPEBUTTON = document.getElementById("fullRecipeButton");
-let HEALTHINPUT = document.getElementById("healthLabel");
+const BUTTONS = document.querySelectorAll(".carouselBtn");
+const CARDS = document.getElementsByClassName("cards");
+const INGR_INPUT = document.getElementById('ingredientsInput');
+const CHOSEN_IMG = document.getElementById("chosenImg");
+const CHOSEN_CALS = document.getElementById("cals");
+const CHOSEN_RECIPE = document.getElementById("fullRecipe");
+const CHOSEN_LABEL = document.getElementById("chosenLabel");
+const INGR_LIST = document.getElementById("ingrList");
+const CAUT_LIST = document.getElementById("cautList");
+const RECIPE_BUTTON = document.getElementById("fullRecipeButton");
+const SPOTIFY_INFO = document.getElementById('spotifyInfoBox');
+const SPOTIFY_PLAYLIST = document.getElementById('embeddedPlaylist');
 const WINE_API_KEY = "c7a302895e054e629add1f2d96bf5b3f";
 const EDAMAM_APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
-const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
+const SPOTIFY_CLIENT_ID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
 const REDIRECT_URI = 'redirect_uri=http://localhost:12345/';
 const TOKEN_TYPE = 'response_type=token';
+let HEALTH_INPUT = document.getElementById("healthLabel");
 let page = 1;
 
 (function () {
@@ -23,26 +24,30 @@ let page = 1;
     document.getElementById("run").addEventListener("click", function () {
 
         // Set recipes by keyword and activate buttons for spotify and wine
-        let ingredientsInput = document.getElementById("ingredientsInput").value;
-        HEALTHINPUT = `&health=${document.getElementById("healthLabel").value}`;
-        if (HEALTHINPUT === "&health=0") {
-            HEALTHINPUT = "";
-            getRecipes(ingredientsInput, HEALTHINPUT).catch(error => {
+        let ingredientsInput = INGR_INPUT.value;
+        HEALTH_INPUT = `&health=${HEALTH_INPUT.value}`;
+        if (HEALTH_INPUT === "&health=0") {
+            HEALTH_INPUT = "";
+            getRecipes(ingredientsInput, HEALTH_INPUT).catch(error => {
                 console.log(error);
-                CHOSENLABEL.innerHTML = "Sorry, no recipes were found with these filters."
-            })
+                CHOSEN_LABEL.innerHTML = "Sorry, no recipes were found with these filters.";
+            });
         } else {
-            getRecipes(ingredientsInput, HEALTHINPUT).catch(error => {
+            getRecipes(ingredientsInput, HEALTH_INPUT).catch(error => {
                 console.log(error);
-                CHOSENLABEL.innerHTML = "Sorry, no recipes were found with these filters."
-            })
+                CHOSEN_LABEL.innerHTML = "Sorry, no recipes were found with these filters.";
+            });
         }
+        getWine(ingredientsInput).catch(error => {
+            console.log(error);
+        });
 
-
+        // Listen to Spotify Button to prompt for login
         document.getElementById('spotify').addEventListener('click', function () {
 
             loginSpotify(ingredientsInput).catch(error => {
                 console.log(error);
+                SPOTIFY_INFO.innerHTML = 'Sorry no playlists available';
             });
         })
     });
@@ -53,7 +58,7 @@ async function getRecipes(ingredient, healthLabel) {
     for (let i = 0; i < 3; i++) {
         CARDS[i].style.opacity = "1";
     }
-    CHOSENLABEL.innerHTML = "";
+    CHOSEN_LABEL.innerHTML = "";
 
     // Button stuff, Handmade carousel
     for (let btn of BUTTONS) {
@@ -149,18 +154,18 @@ async function getRecipes(ingredient, healthLabel) {
 
         // Listen to cards for when recipe is chosen
         CARDS[i].addEventListener("click", function () {
-            RECIPEBUTTON.style.visibility = "visible";
+            RECIPE_BUTTON.style.visibility = "visible";
             console.log(CARDS[i].id);
 
             // Remove child nodes on new load
-            if (INGRLIST.hasChildNodes()) {
+            if (INGR_LIST.hasChildNodes()) {
                 for (let j = 0; j < clickedIngr.length; j++) {
-                    INGRLIST.removeChild(INGRLIST.childNodes[0]);
+                    INGR_LIST.removeChild(INGR_LIST.childNodes[0]);
                 }
             }
-            if (CAUTLIST.hasChildNodes()) {
+            if (CAUT_LIST.hasChildNodes()) {
                 for (let i = 0; i < clickedCautions.length; i++) {
-                    CAUTLIST.removeChild(CAUTLIST.childNodes[0]);
+                    CAUT_LIST.removeChild(CAUT_LIST.childNodes[0]);
                 }
             }
 
@@ -176,18 +181,18 @@ async function getRecipes(ingredient, healthLabel) {
 
             // Append the list of cautions and ingredients to the html
             for (let j = 0; j < clickedIngr.length; j++) {
-                INGRLIST.innerHTML += `<li> ${clickedIngr[j]}</li>`;
+                INGR_LIST.innerHTML += `<li> ${clickedIngr[j]}</li>`;
             }
             for (let j = 0; j < clickedCautions.length; j++) {
-                CAUTLIST.innerHTML += `<li>${clickedCautions[j]}</li>`;
+                CAUT_LIST.innerHTML += `<li>${clickedCautions[j]}</li>`;
             }
 
             // Set information to divs when recipe is chosen
-            CHOSENIMG.setAttribute("src", data.hits[i].recipe.image);
-            CHOSENRECIPE.setAttribute("href", data.hits[i].recipe.url);
-            CHOSENLABEL.innerHTML = data.hits[i].recipe.label;
-            CHOSENRECIPE.innerHTML = "Get the full recipe";
-            CHOSENCALS.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
+            CHOSEN_IMG.setAttribute("src", data.hits[i].recipe.image);
+            CHOSEN_RECIPE.setAttribute("href", data.hits[i].recipe.url);
+            CHOSEN_LABEL.innerHTML = data.hits[i].recipe.label;
+            CHOSEN_RECIPE.innerHTML = "Get the full recipe";
+            CHOSEN_CALS.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
         });
     }
 }
@@ -201,7 +206,7 @@ if (token) {
 
 // Popup a window and return the key that spotify returned
 function loginSpotify(ingredient) {
-    let path = AUTH_BASE_URL + '?' + SPOTIFYCLIENTID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
+    let path = AUTH_BASE_URL + '?' + SPOTIFY_CLIENT_ID + '&' + REDIRECT_URI + '&' + TOKEN_TYPE;
 
     let popup = window.open(path, 'Login in with Spotify', 'width=600, height=400');
     window.spotifyCallback = function(accessKey) {
@@ -226,28 +231,16 @@ function loginSpotify(ingredient) {
 // Set Playlist info in Div
 function setSpotifyInfo(playlistObj) {
 
-    if (playlistObj.error) {
-        document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
-    } else {
         let playlistArray = playlistObj.playlists.items;
 
         // Randomize playlist choice
         let playlistId = playlistArray[Math.floor(Math.random() * playlistArray.length)].id;
-
-        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
-    }
+        SPOTIFY_PLAYLIST.src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
+        SPOTIFY_INFO.style.visibility = 'visible';
 
 }
 
 // Wine API
-document.getElementById("run").addEventListener("click", function () {
-    let ingredientsInput = document.getElementById("ingredientsInput").value;
-    getWine(ingredientsInput).catch(error => {
-        console.log(error);
-    });
-
-});
-
 async function getWine() {
     //let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${WINE_API_KEY}`);
     let tempResponse = "blueCheese.json";
