@@ -100,12 +100,17 @@ html {
     visibility: hidden;
     grid-area: btn2;
     align-self: center;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 #prvBtn {
     grid-area: btn1;
     visibility: hidden;
     align-self: center;
+    max-height: 100%;
+    max-width: 100%;
+    transform: scaleX(-1);
 }
 
 
