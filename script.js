@@ -205,8 +205,6 @@ function loginSpotify(ingredient) {
         console.log(accessKey);
         popup.close();
 
-
-
         ingredient = 'q=' + ingredient;
         fetch('https://api.spotify.com/v1/search?' + ingredient + '&type=playlist', {
             headers: {
@@ -233,4 +231,48 @@ function setSpotifyInfo(playlistObj) {
 
         document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
     }
+}
+
+// Wine API
+const API_KEY = "c7a302895e054e629add1f2d96bf5b3f";
+let data;
+
+document.getElementById("run").addEventListener("click", function () {
+    let ingredientsInput = document.getElementById("ingredientsInput").value;
+
+    getWine().catch(error => {
+        console.log(error);
+    });
+
+});
+
+async function getWine() {
+    //let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${API_KEY}`);
+    //console.log(response);
+    let tempResponse = "blueCheese.json";
+    const wines = await fetch(tempResponse);
+    data = await wines.json();
+    //data = await response.json();
+    console.log(data);
+    console.log(data.pairedWines);
+    console.log(data.pairingText);
+    console.log(data.productMatches);
+    printWine(data);
+}
+
+function printWine(param) {
+    if (param.pairedWines.length == 0 && param.productMatches.length == 0 && param.pairingText == "") {
+        document.getElementById("pairingText").innerHTML = "freestyle your drinks";
+    } else if (param.pairedWines.length == 0 && param.productMatches.length == 0){
+        document.getElementById("pairingText").innerHTML = param.pairingText;
+    }
+    else {
+        document.getElementById("pairingText").innerText = param.pairingText;
+        for (let i = 0; i < param.pairedWines.length; i++)
+        {
+            document.getElementById("pairedWines").innerHTML = param.pairedWines[i];
+        }
+    }
+
+    return param;
 }
