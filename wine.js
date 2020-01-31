@@ -5,9 +5,12 @@ document.getElementById("run").addEventListener("click", function () {
     let ingredientsInput = document.getElementById("ingredientsInput").value;
 
     async function getWine() {
-        let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${API_KEY}`);
+        //let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${API_KEY}`);
         //console.log(response);
-        data = await response.json();
+        let tempResponse = "blueCheese.json";
+        const wines = await fetch(tempResponse);
+        data = await wines.json();
+        //data = await response.json();
         console.log(data);
         console.log(data.pairedWines);
         console.log(data.pairingText);
