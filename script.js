@@ -25,6 +25,7 @@ let page = 1;
 
         // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
+        let healthInput = document.getElementById("healthLabel").value;
 
         getRecipes(ingredientsInput).catch(error => {
             console.log(error);
