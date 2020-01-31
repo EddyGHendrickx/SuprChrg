@@ -36,13 +36,13 @@
 
 <section id="container">
     <section id="header">
-        <img id="fridgeIcon" src="image/kitchen-clip-fridge-transparent.png" height="100" alt="What the fridge logo">
+        <img id="fridgeIcon" src="image/kitchen-clip-fridge-transparent.png" height="100" alt="Fridge logo">
         <h1 id="pageTitle">What The Fridge</h1>
     </section>
     <section id="topSection">
         <section class="grid-item" id="searchBar">
-            <input id="ingredientsInput" placeholder="Type some ingredients" type="text"/>
-            <select id="healthLabel">
+            <input id="ingredientsInput" placeholder="Type some ingredients" type="text" name="input"/>
+            <select id="healthLabel" name="select health lable">
                 <option value="0"></option>
                 <option value="vegan">Vegan</option>
                 <option value="vegetarian">Vegetarian</option>
@@ -59,7 +59,7 @@
                 <option value="fish-free">Fish-free</option>
                 <option value="shellfish-free">Shellfish-free</option>
             </select>
-            <button id="run" name="Search for recipes"><img src="image/search.png" alt="Search for recipes"></button>
+            <button id="run" name="Search"><img src="image/search.png" alt="Search for recipes"></button>
 
         </section>
     </section>
@@ -157,7 +157,7 @@
             </section>
 
             <section id="fullRecipeSection">
-                <button id="fullRecipeButton" name="Go to full recipe"><a id="fullRecipe"></a></button>
+                <button id="fullRecipeButton" name="Full recipe"><a id="fullRecipe"></a></button>
             </section>
         </section>
     </section>
