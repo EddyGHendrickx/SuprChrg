@@ -105,12 +105,13 @@ html {
 }
 #spotifyBar {
     height: 15vh;
-    grid-area: p2;
-    margin-left: 25vw;
+    margin-left: 26vw;
     transition: all 1s ease-in-out;
     background-image: url("image/spotify.png");
     background-size: contain;
     background-repeat: repeat-x;
+    border-bottom-left-radius: 50vmin;
+    border-top-left-radius: 50vmin;
 
 }
 
