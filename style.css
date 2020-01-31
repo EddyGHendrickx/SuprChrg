@@ -102,6 +102,7 @@ body {
     grid-area: crsl3;
     justify-content: center;
     flex-direction: column-reverse;
+    align-items: center;
     opacity: 0;
 }
 
