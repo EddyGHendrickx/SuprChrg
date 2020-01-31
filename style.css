@@ -170,7 +170,7 @@ html {
     flex-wrap: nowrap;
 }
 
-/*#chosenImgSection {
+#chosenImgSection {
     grid-area: chosenImg;
 }
 
@@ -181,7 +181,7 @@ html {
 
 #extraInfo {
     grid-area: eI;
-}*/
+}
 
 #spotifyInfo {
     grid-area: sInfo;
@@ -220,12 +220,17 @@ html {
                 "btn1 btn2"
                 "p1 p2"
                 "cL cL"
-                "chosenImg chosenImg"
-                "ingr ingr"
-                "eI eI"
+                "cF cF"
+                "cF cF"
+                "cF cF"
                 "wineI wineI"
                 "sInfo sInfo"
                 ;
+    }
+
+    #container-flex {
+        display: flex;
+        flex-direction: column;
     }
     #spotifyBar {
         margin-right: -5vw;
@@ -239,7 +244,7 @@ html {
     #container {
         display: grid;
         grid-template-columns: repeat(auto-fit, 186px);
-/*        grid-column-gap: 2vh;*/
+        grid-column-gap: 2vh;
         grid-row-gap: 5vh;
         grid-template-rows: 0.25fr repeat(1, 1fr);
         grid-template-areas:
@@ -251,16 +256,19 @@ html {
                 "btn1 btn2"
                 "p1 p2"
                 "cL cL"
-                "chosenImg chosenImg"
-                "ingr ingr"
-                "eI eI"
+                "cF cF"
+                "cF cF"
+                "cF cF"
                 "wineI wineI"
                 "sInfo sInfo"
     ;
     }
-    #container-flex{
+
+    #container-flex {
         display: flex;
+        flex-direction: column;
     }
+
     #spotifyBar {
         margin-right: 5vw;
     }
