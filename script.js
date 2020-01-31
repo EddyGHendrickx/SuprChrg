@@ -12,6 +12,7 @@ let cautList = document.getElementById("cautList");
 let container = document.getElementById("container");
 let chosenLabel = document.getElementById("chosenLabel");
 let recipeButton = document.getElementById("fullRecipeButton");
+let healthInput = document.getElementById("healthLabel");
 const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
@@ -25,11 +26,17 @@ let page = 1;
 
         // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
-        let healthInput = document.getElementById("healthLabel").value;
+        healthInput = `&health=${document.getElementById("healthLabel").value}`;
+        if (healthInput == 0) {
+            getRecipes(ingredientsInput).catch(error => {
+                console.log(error);
+            })
+        } else {
+            getRecipes(ingredientsInput, healthInput).catch(error => {
+                console.log(error);
+            })
+        }
 
-        getRecipes(ingredientsInput).catch(error => {
-            console.log(error);
-        });
 
         document.getElementById('spotify').addEventListener('click', function () {
 
@@ -41,8 +48,7 @@ let page = 1;
 })();
 
 
-async function getRecipes(ingredient) {
-
+async function getRecipes(ingredient, healthLabel) {
     for (let i = 0; i < 3; i++) {
         cards[i].style.opacity = "1";
     }
@@ -55,12 +61,12 @@ async function getRecipes(ingredient) {
             console.log(page);
             if (btn.id === "prvBtn") {
                 page--;
-                if (page === 0){
+                if (page === 0) {
                     page = 3;
                 }
-            } else if(btn.id === "nxtBtn") {
+            } else if (btn.id === "nxtBtn") {
                 page++;
-                if (page === 4){
+                if (page === 4) {
                     page = 1;
                 }
             }
@@ -124,8 +130,8 @@ async function getRecipes(ingredient) {
     }
 
     // Fetch data
-    //let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722&health=alcohol-free";
-    let path = "tomato.json";
+    let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + "&from=0&to=9&calories=591-722" + healthLabel;
+    //let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
     console.log(data);
@@ -200,6 +206,7 @@ function loginSpotify(ingredient) {
         popup.close();
 
 
+
         ingredient = 'q=' + ingredient;
         fetch('https://api.spotify.com/v1/search?' + ingredient + '&type=playlist', {
             headers: {
@@ -219,8 +226,7 @@ function setSpotifyInfo(playlistObj) {
     console.log(playlistObj);
     if (playlistObj.error) {
         document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
-    }
-    else {
+    } else {
         let playlistArray = playlistObj.playlists.items;
 
         let playlistPicture = playlistArray[0].images[0].url;
