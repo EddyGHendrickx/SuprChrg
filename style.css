@@ -18,7 +18,7 @@ html {
     grid-column-gap: 2vmax;
     grid-row-gap: 2vmax;
     grid-template-areas:
-    "icon . title  . ."
+    ". . hdr . ."
     ". . tS . ."
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
@@ -28,16 +28,12 @@ html {
     ". sInfo sInfo sInfo .";
 }
 
-header {
-    display: inline;
-}
-
-#fridgeIcon {
-    grid-area: icon;
-}
-
-#pageTitle {
-    grid-area: title;
+#header {
+    grid-area: hdr;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #wineInfo {
