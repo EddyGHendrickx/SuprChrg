@@ -36,7 +36,7 @@ button > img {
 }
 
 body {
-    background-color: #EBF0E6;
+    background-color: #E7E8D5;
 }
 #container {
     margin: auto;
@@ -140,7 +140,7 @@ body {
 }
 
 #nxtBtn {
-    display: none;
+    visibility: hidden;
     grid-area: btn2;
     align-self: center;
     max-height: 100%;
@@ -149,8 +149,8 @@ body {
 }
 
 #prvBtn {
-    display: none;
     grid-area: btn1;
+    visibility: hidden;
     align-self: center;
     max-height: 100%;
     max-width: 100%;
@@ -168,7 +168,6 @@ body {
     display: grid;
     overflow: hidden;
 }
-
 #spotifyBar {
     height: 15vh;
     margin-left: 26vw;
@@ -240,7 +239,7 @@ body {
     justify-content: center;
 }
 #chosenLabel{
-    font-size: 50px;
+
 }
 
 #fullRecipeButton {

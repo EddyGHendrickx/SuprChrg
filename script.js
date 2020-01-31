@@ -62,7 +62,7 @@ async function getRecipes(ingredient, healthLabel) {
 
     // Button stuff, Handmade carousel
     for (let btn of BUTTONS) {
-        btn.style.display = "block";
+        btn.style.visibility = "visible";
     }
     BUTTONS.forEach(function (btn) {
         btn.addEventListener("click", function () {
