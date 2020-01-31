@@ -221,22 +221,14 @@ function loginSpotify(ingredient) {
 // Set Playlist info in Div
 function setSpotifyInfo(playlistObj) {
 
-    console.log(playlistObj);
     if (playlistObj.error) {
         document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
     } else {
         let playlistArray = playlistObj.playlists.items;
+        console.log(playlistArray);
 
-        let playlistPicture = playlistArray[0].images[0].url;
         let playlistName = playlistArray[0].name;
-        let playlistExternalUrl = playlistArray[0].external_urls.spotify;
 
-        document.getElementById('spotifyImg').src = playlistPicture;
-        document.getElementById('spotifyInfoBox').innerHTML = playlistName;
-
-        // Link the image to the playlist
-        document.getElementById('spotifyImg').addEventListener('click', function () {
-            window.open(playlistExternalUrl, playlistName, 'width=600, height=600');
-        });
+        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistArray[0].id + '/';
     }
 }
