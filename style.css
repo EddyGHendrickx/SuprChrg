@@ -145,6 +145,7 @@ body {
     align-self: center;
     max-height: 100%;
     max-width: 100%;
+    cursor: pointer;
 }
 
 #prvBtn {
@@ -154,6 +155,7 @@ body {
     max-height: 100%;
     max-width: 100%;
     transform: scaleX(-1);
+    cursor: pointer;
 }
 
 #nxtBtn:hover, #prvBtn:hover {
@@ -288,6 +290,10 @@ body {
     #wineScoreBar {
         padding-left: -45vw;
     }
+
+    #topSection {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 800px) {
@@ -324,5 +330,9 @@ body {
     }
     #wineScoreBar {
         margin-left: -45vw;
+    }
+
+    #topSection {
+        width: 100%;
     }
 }
