@@ -168,7 +168,7 @@ body {
 }
 #spotifyBar {
     height: 15vh;
-    margin-left: 26vw;
+    margin-left: 27vw;
     transition: all 1s ease-in-out;
     background-image: url("image/spotify.png");
     background-size: contain;
@@ -185,7 +185,6 @@ body {
     overflow: hidden;
 }
 #wineScoreBar {
-
     height: 15vh;
     margin-right: 25vw;
     border-bottom-right-radius: 50vmin;
@@ -197,6 +196,7 @@ body {
 
 #wineScoreBar:hover {
     margin-right: 5vw;
+    opacity: 0.5;
 }
 
 #spotifyBar:hover {
