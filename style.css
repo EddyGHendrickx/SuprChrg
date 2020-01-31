@@ -1,6 +1,15 @@
 html {
     scroll-behavior: smooth;
+
 }
+li{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#chosenLabel, #pairingText, #pairedWines, #cals, .cards {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .cards {
     text-decoration: none;
     color: black;
@@ -28,6 +37,7 @@ html {
 }
 
 #header {
+    font-family: 'Courgette', cursive;
     grid-area: hdr;
     display: flex;
     flex-wrap: nowrap;
@@ -48,6 +58,7 @@ html {
     background-image: url("image/backgroundimage.jpg");
     background-size: cover;
     padding: 10em;
+
     /*margin: 3vh 0 0 -30px;*/
 }
 
@@ -67,7 +78,6 @@ html {
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
@@ -82,7 +92,6 @@ html {
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
@@ -92,7 +101,6 @@ html {
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    background-color: red;
     opacity: 0;
 }
 
@@ -113,6 +121,9 @@ html {
     transform: scaleX(-1);
 }
 
+#nxtBtn:hover, #prvBtn:hover {
+    opacity: 0.7;
+}
 
 #spotify {
     grid-area: p2;
@@ -167,7 +178,7 @@ html {
     flex-wrap: nowrap;
 }
 
-/*#chosenImgSection {
+#chosenImgSection {
     grid-area: chosenImg;
 }
 
@@ -178,7 +189,7 @@ html {
 
 #extraInfo {
     grid-area: eI;
-}*/
+}
 
 #spotifyInfo {
     grid-area: sInfo;
@@ -189,6 +200,9 @@ html {
     display: flex;
     justify-content: center;
 }
+#chosenLabel{
+
+}
 
 #fullRecipeButton {
     visibility: hidden;
@@ -198,6 +212,8 @@ html {
     height: 30%;
     width: 30%;
     margin-top: 4vh;
+}
+#pairingText{
 }
 
 
@@ -217,12 +233,17 @@ html {
                 "btn1 btn2"
                 "p1 p2"
                 "cL cL"
-                "chosenImg chosenImg"
-                "ingr ingr"
-                "eI eI"
+                "cF cF"
+                "cF cF"
+                "cF cF"
                 "wineI wineI"
                 "sInfo sInfo"
                 ;
+    }
+
+    #container-flex {
+        display: flex;
+        flex-direction: column;
     }
     #spotifyBar {
         margin-right: -5vw;
@@ -236,7 +257,7 @@ html {
     #container {
         display: grid;
         grid-template-columns: repeat(auto-fit, 186px);
-/*        grid-column-gap: 2vh;*/
+        grid-column-gap: 2vh;
         grid-row-gap: 5vh;
         grid-template-rows: 0.25fr repeat(1, 1fr);
         grid-template-areas:
@@ -248,16 +269,19 @@ html {
                 "btn1 btn2"
                 "p1 p2"
                 "cL cL"
-                "chosenImg chosenImg"
-                "ingr ingr"
-                "eI eI"
+                "cF cF"
+                "cF cF"
+                "cF cF"
                 "wineI wineI"
                 "sInfo sInfo"
     ;
     }
-    #container-flex{
+
+    #container-flex {
         display: flex;
+        flex-direction: column;
     }
+
     #spotifyBar {
         margin-right: 5vw;
     }
