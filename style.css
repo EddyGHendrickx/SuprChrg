@@ -5,6 +5,23 @@ html {
 li{
     font-family: 'Josefin Sans', sans-serif;
 }
+input {
+    border-radius: 10px;
+    margin-right: 1em;
+}
+
+button > img {
+    height: 2.5em;
+    width: 2.5em;
+    transform: scaleX(-1);
+}
+#healthLabel {
+    margin-right: 1em;
+    border-radius: 10px;
+}
+#run {
+    border-radius: 50%;
+}
 
 #chosenLabel, #pairingText, #pairedWines, #cals, .cards {
     font-family: 'Josefin Sans', sans-serif;
@@ -19,7 +36,7 @@ li{
 }
 
 body {
-    background-color: #E8E7D5;
+    background-color: #E7E8D5;
 }
 #container {
     margin: auto;
@@ -42,6 +59,17 @@ body {
 .cards > section > img {
     border-radius: 50%;
 }
+
+.cards > section > img:hover {
+    -moz-box-shadow:    5px 5px 10px #E3D1C5;
+    -webkit-box-shadow: 5px 5px 10px #E3D1C5;
+    box-shadow:         5px 5px 10px #E3D1C5;
+}
+
+/*.cards > section > img:hover {*/
+/*    border: black solid 1px;*/
+/*}*/
+
 
 #header {
     font-family: 'Courgette', cursive;
@@ -88,9 +116,10 @@ body {
     opacity: 0;
 }
 
-#carousel1:hover, #carousel2:hover, #carousel3:hover, #carousel4:hover, #carousel5:hover, #carousel7:hover, #carousel8:hover, #carousel9:hover {
+
+/*#carousel1:hover, #carousel2:hover, #carousel3:hover, #carousel4:hover, #carousel5:hover, #carousel7:hover, #carousel8:hover, #carousel9:hover {
     box-shadow: .1em .1em black;
-}
+}*/
 
 #carousel2, #carousel5, #carousel8 {
     display: flex;
