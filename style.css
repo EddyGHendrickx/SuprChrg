@@ -18,6 +18,7 @@ html {
     grid-column-gap: 2vmax;
     grid-row-gap: 2vmax;
     grid-template-areas:
+    ". . head . ."
     ". . tS . ."
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
@@ -27,6 +28,9 @@ html {
     ". sInfo sInfo sInfo .";
 }
 
+header {
+    grid-area: head;
+}
 #wineInfo {
     grid-area: wineI;
 }
