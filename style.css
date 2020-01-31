@@ -18,7 +18,7 @@ html {
     grid-column-gap: 2vmax;
     grid-row-gap: 2vmax;
     grid-template-areas:
-    ". . hdr . ."
+    "hdr hdr hdr hdr hdr"
     "tS tS tS tS tS"
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
@@ -204,6 +204,7 @@ html {
         grid-row-gap: 5vh;
         grid-template-rows: 0.25fr repeat(9, 1fr);
         grid-template-areas:
+                "hdr hdr"
                 "tS tS"
                 "crsl1 crsl1"
                 "crsl2 crsl2"
@@ -234,6 +235,7 @@ html {
         grid-row-gap: 5vh;
         grid-template-rows: 0.25fr repeat(1, 1fr);
         grid-template-areas:
+                "hdr hdr"
                 "tS tS"
                 "crsl1 crsl1"
                 "crsl2 crsl2"
