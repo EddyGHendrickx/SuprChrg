@@ -19,7 +19,7 @@ html {
     grid-row-gap: 2vmax;
     grid-template-areas:
     ". . hdr . ."
-    ". . tS . ."
+    "tS tS tS tS tS"
     "btn1 crsl1 crsl2 crsl3 btn2"
     "p1 p1 . p2 p2"
     "cL cL cL cL cL"
@@ -39,13 +39,17 @@ html {
 #wineInfo {
     grid-area: wineI;
 }
+
 #topSection {
     grid-area: tS;
-    width: auto;
+    /*width: 100%;*/
     display: flex;
     height: 3em;
     justify-content: center;
-    margin-top: 3vh;
+    background-image: url("image/backgroundimage.jpg");
+    background-size: cover;
+    padding: 10em;
+    /*margin: 3vh 0 0 -30px;*/
 }
 
 #searchBar {
