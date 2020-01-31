@@ -8,7 +8,7 @@ html {
 #carousel1, #carousel2, #carousel3 {
     z-index: 100;
 }
-
+/*Let's make this shit purdy*/
 #container {
     margin: auto;
     width: 95vw;
