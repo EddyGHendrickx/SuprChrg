@@ -295,7 +295,7 @@ body {
         grid-template-columns: auto auto;
         grid-column-gap: 2vh;
         grid-row-gap: 5vh;
-        grid-template-rows: 0.25fr repeat(12, 1fr);
+        grid-template-rows: auto auto;
         grid-template-areas:
                 "hdr hdr"
                 "tS tS"
