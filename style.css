@@ -170,7 +170,7 @@ body {
 }
 #spotifyBar {
     height: 15vh;
-    margin-left: 26vw;
+    margin-left: 27vw;
     transition: all 1s ease-in-out;
     background-image: url("image/spotify.png");
     background-size: contain;
@@ -187,7 +187,6 @@ body {
     overflow: hidden;
 }
 #wineScoreBar {
-
     height: 15vh;
     margin-right: 25vw;
     border-bottom-right-radius: 50vmin;
@@ -199,6 +198,7 @@ body {
 
 #wineScoreBar:hover {
     margin-right: 5vw;
+    opacity: 0.5;
 }
 
 #spotifyBar:hover {
@@ -258,10 +258,10 @@ body {
 @media only screen and (max-width: 600px) {
     #container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: auto auto;
         grid-column-gap: 5vh;
         grid-row-gap: 5vh;
-        grid-template-rows: 0.25fr repeat(9, 1fr);
+        grid-template-rows: 0.25fr repeat(12, 1fr);
         grid-template-areas:
                 "hdr hdr"
                 "tS tS"
@@ -298,10 +298,10 @@ body {
 @media only screen and (max-width: 800px) {
     #container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, 186px);
+        grid-template-columns: auto auto;
         grid-column-gap: 2vh;
         grid-row-gap: 5vh;
-        grid-template-rows: 0.25fr repeat(1, 1fr);
+        grid-template-rows: 0.25fr repeat(12, 1fr);
         grid-template-areas:
                 "hdr hdr"
                 "tS tS"
