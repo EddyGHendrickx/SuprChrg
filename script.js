@@ -28,10 +28,12 @@ let page = 1;
             healthInput = "";
             getRecipes(ingredientsInput, healthInput).catch(error => {
                 console.log(error);
+                chosenLabel.innerHTML = "Sorry, no recipes were found with these filters."
             })
         } else {
             getRecipes(ingredientsInput, healthInput).catch(error => {
                 console.log(error);
+                chosenLabel.innerHTML = "Sorry, no recipes were found with these filters."
             })
         }
 
@@ -56,7 +58,6 @@ async function getRecipes(ingredient, healthLabel) {
     }
     buttons.forEach(function (btn) {
         btn.addEventListener("click", function () {
-            console.log(page);
             if (btn.id === "prvBtn") {
                 page--;
                 if (page === 0) {
@@ -68,6 +69,7 @@ async function getRecipes(ingredient, healthLabel) {
                     page = 1;
                 }
             }
+            // carousel
             if (page === 1) {
                 for (let i = 0; i < 3; i++) {
                     cards[i].style.opacity = "1";
@@ -225,10 +227,10 @@ function setSpotifyInfo(playlistObj) {
         document.getElementById('spotifyInfoBox').innerHTML = 'Sorry no playlists available';
     } else {
         let playlistArray = playlistObj.playlists.items;
-        console.log(playlistArray);
 
-        let playlistName = playlistArray[0].name;
+        // Randomize playlist choice
+        let playlistId = playlistArray[Math.floor(Math.random() * playlistArray.length)].id;
 
-        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistArray[0].id + '/';
+        document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
     }
 }
