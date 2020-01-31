@@ -208,6 +208,8 @@ function loginSpotify(ingredient) {
         console.log(accessKey);
         popup.close();
 
+
+
         ingredient = 'q=' + ingredient;
         fetch('https://api.spotify.com/v1/search?' + ingredient + '&type=playlist', {
             headers: {
@@ -234,6 +236,7 @@ function setSpotifyInfo(playlistObj) {
 
         document.getElementById('embeddedPlaylist').src = 'https://open.spotify.com/embed/playlist/' + playlistId + '/';
     }
+
 }
 
 // Wine API

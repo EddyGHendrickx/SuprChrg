@@ -19,7 +19,7 @@ li{
 }
 
 body {
-    background-color: #FFFFE7;
+    background-color: #E8E7D5;
 }
 #container {
     margin: auto;
@@ -194,6 +194,7 @@ body {
 }
 
 #spotifyInfo {
+    visibility: hidden;
     grid-area: sInfo;
  }
 
