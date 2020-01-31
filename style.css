@@ -15,6 +15,23 @@ button > img {
     width: 2.5em;
     transform: scaleX(-1);
 }
+
+#fullRecipeButton {
+    background-color: #640d33;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#fullRecipeButton a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 #healthLabel {
     margin-right: 1em;
     border-radius: 10px;

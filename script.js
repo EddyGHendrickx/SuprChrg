@@ -252,7 +252,7 @@ async function getWine(ingredientsInput) {
 
 function printWine(param) {
     if (param.pairedWines.length == 0 && param.productMatches.length == 0 && param.pairingText == "") {
-        document.getElementById("pairingText").innerHTML = "freestyle your drinks";
+        document.getElementById("pairingText").innerHTML = "Freestyle your drinks.";
     } else if (param.pairedWines.length == 0 && param.productMatches.length == 0){
         document.getElementById("pairingText").innerHTML = param.pairingText;
     }
