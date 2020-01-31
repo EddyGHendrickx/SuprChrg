@@ -263,6 +263,4 @@ function printWine(param) {
             document.getElementById("pairedWines").innerHTML = param.pairedWines[i];
         }
     }
-
-    return param;
 }
