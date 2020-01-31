@@ -19,7 +19,7 @@ li{
 }
 
 body {
-    background-color: #E7E8D5;
+    background-color: #EBF0E6;
 }
 #container {
     margin: auto;
@@ -149,6 +149,7 @@ body {
     display: grid;
     overflow: hidden;
 }
+
 #spotifyBar {
     height: 15vh;
     margin-left: 26vw;
@@ -220,7 +221,7 @@ body {
     justify-content: center;
 }
 #chosenLabel{
-
+    font-size: 50px;
 }
 
 #fullRecipeButton {
