@@ -142,7 +142,6 @@ async function getRecipes(ingredient, healthLabel) {
     //let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
-    console.log(data);
 
     // Adding info to cards
     let clickedIngr = [];
@@ -244,12 +243,10 @@ function setSpotifyInfo(playlistObj) {
 }
 
 // Wine API
-async function getWine() {
-    //let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${WINE_API_KEY}`);
-    let tempResponse = "blueCheese.json";
-    const wines = await fetch(tempResponse);
-    let data = await wines.json();
-    //data = await response.json();
+async function getWine(ingredientsInput) {
+    let response = await fetch(`https://api.spoonacular.com/food/wine/pairing?food=${ingredientsInput}&apiKey=${WINE_API_KEY}`);
+    let data = await response.json();
+    console.log(data);
     printWine(data);
 }
 
