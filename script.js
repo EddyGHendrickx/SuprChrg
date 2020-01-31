@@ -1,17 +1,17 @@
-let buttons = document.querySelectorAll(".carouselBtn");
-let nxtBtn = document.getElementById("nxtBtn");
-let prvBtn = document.getElementById("prvBtn");
-let cards = document.getElementsByClassName("cards");
-let chosenImg = document.getElementById("chosenImg");
-let chosenCals = document.getElementById("cals");
-let chosenRecipe = document.getElementById("fullRecipe");
-let ingrList = document.getElementById("ingrList");
-let cautList = document.getElementById("cautList");
-let chosenLabel = document.getElementById("chosenLabel");
-let recipeButton = document.getElementById("fullRecipeButton");
-let healthInput = document.getElementById("healthLabel");
+let BUTTONS = document.querySelectorAll(".carouselBtn");
+let NXTBTN = document.getElementById("nxtBtn");
+let PRVBTN = document.getElementById("prvBtn");
+let CARDS = document.getElementsByClassName("cards");
+let CHOSENIMG = document.getElementById("chosenImg");
+let CHOSENCALS = document.getElementById("cals");
+let CHOSENRECIPE = document.getElementById("fullRecipe");
+let INGRLIST = document.getElementById("ingrList");
+let CAUTLIST = document.getElementById("cautList");
+let CHOSENLABEL = document.getElementById("chosenLabel");
+let RECIPEBUTTON = document.getElementById("fullRecipeButton");
+let HEALTHINPUT = document.getElementById("healthLabel");
 const WINE_API_KEY = "c7a302895e054e629add1f2d96bf5b3f";
-const APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
+const EDAMAM_APPID = "app_id=dead107b&app_key=f41a8806635125b308ec8fb021456e20";
 const SPOTIFYCLIENTID = "client_id=8f700bce8751463db952c79260589c04";
 const AUTH_BASE_URL = 'https://accounts.spotify.com/authorize';
 const REDIRECT_URI = 'redirect_uri=http://localhost:12345/';
@@ -24,17 +24,17 @@ let page = 1;
 
         // Set recipes by keyword and activate buttons for spotify and wine
         let ingredientsInput = document.getElementById("ingredientsInput").value;
-        healthInput = `&health=${document.getElementById("healthLabel").value}`;
-        if (healthInput === "&health=0") {
-            healthInput = "";
-            getRecipes(ingredientsInput, healthInput).catch(error => {
+        HEALTHINPUT = `&health=${document.getElementById("healthLabel").value}`;
+        if (HEALTHINPUT === "&health=0") {
+            HEALTHINPUT = "";
+            getRecipes(ingredientsInput, HEALTHINPUT).catch(error => {
                 console.log(error);
-                chosenLabel.innerHTML = "Sorry, no recipes were found with these filters."
+                CHOSENLABEL.innerHTML = "Sorry, no recipes were found with these filters."
             })
         } else {
-            getRecipes(ingredientsInput, healthInput).catch(error => {
+            getRecipes(ingredientsInput, HEALTHINPUT).catch(error => {
                 console.log(error);
-                chosenLabel.innerHTML = "Sorry, no recipes were found with these filters."
+                CHOSENLABEL.innerHTML = "Sorry, no recipes were found with these filters."
             })
         }
 
@@ -51,15 +51,15 @@ let page = 1;
 
 async function getRecipes(ingredient, healthLabel) {
     for (let i = 0; i < 3; i++) {
-        cards[i].style.opacity = "1";
+        CARDS[i].style.opacity = "1";
     }
-    chosenLabel.innerHTML = "";
+    CHOSENLABEL.innerHTML = "";
 
     // Button stuff, Handmade carousel
-    for (let btn of buttons) {
+    for (let btn of BUTTONS) {
         btn.style.visibility = "visible";
     }
-    buttons.forEach(function (btn) {
+    BUTTONS.forEach(function (btn) {
         btn.addEventListener("click", function () {
             if (btn.id === "prvBtn") {
                 page--;
@@ -75,65 +75,65 @@ async function getRecipes(ingredient, healthLabel) {
             // carousel
             if (page === 1) {
                 for (let i = 0; i < 3; i++) {
-                    cards[i].style.opacity = "1";
-                    cards[i].style.zIndex = "100";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "1";
+                    CARDS[i].style.zIndex = "100";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
             }
             if (page === 2) {
                 for (let i = 0; i < 3; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
-                    cards[i].style.opacity = "1";
-                    cards[i].style.zIndex = "100";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "1";
+                    CARDS[i].style.zIndex = "100";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
             }
 
             if (page === 3) {
                 for (let i = 0; i < 3; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 3; i < 6; i++) {
-                    cards[i].style.opacity = "0";
-                    cards[i].style.zIndex = "0";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "0";
+                    CARDS[i].style.zIndex = "0";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
                 for (let i = 6; i < 9; i++) {
-                    cards[i].style.opacity = "1";
-                    cards[i].style.zIndex = "100";
-                    cards[i].style.transition = "all 0.5s linear";
+                    CARDS[i].style.opacity = "1";
+                    CARDS[i].style.zIndex = "100";
+                    CARDS[i].style.transition = "all 0.5s linear";
                 }
             }
         })
     });
     for (let i = 3; i < 9; i++) {
-        cards[i].style.opacity = "0";
-        cards[i].style.zIndex = "0";
+        CARDS[i].style.opacity = "0";
+        CARDS[i].style.zIndex = "0";
     }
 
     // Fetch data
-    let path = "https://api.edamam.com/search?q=" + ingredient + "&" + APPID + healthLabel;
+    let path = "https://api.edamam.com/search?q=" + ingredient + "&" + EDAMAM_APPID + healthLabel;
     //let path = "tomato.json";
     const recipes = await fetch(path);
     const data = await recipes.json();
@@ -143,24 +143,24 @@ async function getRecipes(ingredient, healthLabel) {
     let clickedIngr = [];
     let clickedCautions = [];
 
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].children[0].innerHTML = data.hits[i].recipe.label;
-        cards[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
+    for (let i = 0; i < CARDS.length; i++) {
+        CARDS[i].children[0].innerHTML = data.hits[i].recipe.label;
+        CARDS[i].children[1].children[0].setAttribute("src", data.hits[i].recipe.image);
 
         // Listen to cards for when recipe is chosen
-        cards[i].addEventListener("click", function () {
-            recipeButton.style.visibility = "visible";
-            console.log(cards[i].id);
+        CARDS[i].addEventListener("click", function () {
+            RECIPEBUTTON.style.visibility = "visible";
+            console.log(CARDS[i].id);
 
             // Remove child nodes on new load
-            if (ingrList.hasChildNodes()) {
+            if (INGRLIST.hasChildNodes()) {
                 for (let j = 0; j < clickedIngr.length; j++) {
-                    ingrList.removeChild(ingrList.childNodes[0]);
+                    INGRLIST.removeChild(INGRLIST.childNodes[0]);
                 }
             }
-            if (cautList.hasChildNodes()) {
+            if (CAUTLIST.hasChildNodes()) {
                 for (let i = 0; i < clickedCautions.length; i++) {
-                    cautList.removeChild(cautList.childNodes[0]);
+                    CAUTLIST.removeChild(CAUTLIST.childNodes[0]);
                 }
             }
 
@@ -176,18 +176,18 @@ async function getRecipes(ingredient, healthLabel) {
 
             // Append the list of cautions and ingredients to the html
             for (let j = 0; j < clickedIngr.length; j++) {
-                ingrList.innerHTML += `<li> ${clickedIngr[j]}</li>`;
+                INGRLIST.innerHTML += `<li> ${clickedIngr[j]}</li>`;
             }
             for (let j = 0; j < clickedCautions.length; j++) {
-                cautList.innerHTML += `<li>${clickedCautions[j]}</li>`;
+                CAUTLIST.innerHTML += `<li>${clickedCautions[j]}</li>`;
             }
 
             // Set information to divs when recipe is chosen
-            chosenImg.setAttribute("src", data.hits[i].recipe.image);
-            chosenRecipe.setAttribute("href", data.hits[i].recipe.url);
-            chosenLabel.innerHTML = data.hits[i].recipe.label;
-            chosenRecipe.innerHTML = "Get the full recipe";
-            chosenCals.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
+            CHOSENIMG.setAttribute("src", data.hits[i].recipe.image);
+            CHOSENRECIPE.setAttribute("href", data.hits[i].recipe.url);
+            CHOSENLABEL.innerHTML = data.hits[i].recipe.label;
+            CHOSENRECIPE.innerHTML = "Get the full recipe";
+            CHOSENCALS.innerHTML = `${Math.floor(data.hits[i].recipe.calories)} kCal`;
         });
     }
 }
