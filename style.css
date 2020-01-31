@@ -216,6 +216,39 @@ html {
         margin-right: -5vw;
     }
     #wineScoreBar {
-        margin-left: -25vw;
+        padding-left: -45vw;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 186px);
+/*        grid-column-gap: 2vh;*/
+        grid-row-gap: 5vh;
+        grid-template-rows: 0.25fr repeat(1, 1fr);
+        grid-template-areas:
+                "tS tS"
+                "crsl1 crsl1"
+                "crsl2 crsl2"
+                "crsl3 crsl3"
+                "btn1 btn2"
+                "p1 p2"
+                "cL cL"
+                "chosenImg chosenImg"
+                "ingr ingr"
+                "eI eI"
+                "wineI wineI"
+                "sInfo sInfo"
+    ;
+    }
+    #container-flex{
+        display: flex;
+    }
+    #spotifyBar {
+        margin-right: 5vw;
+    }
+    #wineScoreBar {
+        margin-left: -45vw;
     }
 }
