@@ -160,6 +160,7 @@ html {
 
 #ingr {
     grid-area: ingr;
+    
 }#spotifyInfo {
     grid-area: sInfo;
  }
