@@ -318,7 +318,12 @@ body {
     }
 
     #topSection {
-        width: 100%;
+        width: 0.5vw;
+        margin: 0 auto;
+    }
+
+    #ingredientsInput {
+        width: 30vw;
     }
 }
 
@@ -365,8 +370,14 @@ body {
     #wineScoreBar {
         margin-left: -45vw;
     }
-
     #topSection {
-        width: 100%;
+        width: 30vw;
+        margin: 0 auto;
     }
+
+    #ingredientsInput {
+        width: 30vw;
+    }
+
+
 }
