@@ -270,7 +270,9 @@ body {
     width: 30%;
     margin-top: 4vh;
 }
-#pairingText{
+#fullRecipeButton:hover {
+    filter: grayscale(60%);
+    cursor: pointer;
 }
 
 
